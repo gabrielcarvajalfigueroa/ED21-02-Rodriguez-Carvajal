@@ -1,1 +1,1 @@
-#Carpeta imágenes
+# Carpeta imágenes
