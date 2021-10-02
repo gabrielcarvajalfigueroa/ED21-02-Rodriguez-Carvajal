@@ -7,47 +7,32 @@
 
 **Alumnos:**
 
-* Alumno 01 (Rol)
-* Alumno 02 (Rol)
+* Gabriel Carvajal (Bitácora)
+* Pablo Rodríguez (Coordinador)
 
 ## Resumen 
 
-> Agregar un resumen que describa el trabajo realizado y sus resultados. (Entre 150 y 180 palabras)
-> Más cosas...
-> El resumen indicarlo como cita con el comando `>`
-
+> Para esta primer entrega de nuestro taller, nos enfocamos en la instalación de las herramientas necesarias para trabajar. Primero nos informamos acerca de la librería OpenCV, aprendimos que sirve para trabajar con reconocimiento de patrones en imágenes, buscamos la mejor opción de IDE para trabajar con esta librería decidiéndonos por Visual Studio Code, ya que la mayoría de documentación recomendaba usar dicha IDE. Mediante videos tutoriales, leer documentación y un poco de ingenio de nuestra parte pudimos instalar tanto la IDE como la librería OpenCV. Una vez instaladas aprendimos a reconocer una imagen para completar la primera entrega de este taller.
 ## 1. Introducción
 
-La primera función de un reporte técnico es plasmar la información necesaria para que otras personas puedan reproducir el sistema propuesto o puedan entender su fucnionamiento . Para cumplir anterior se debe diferenciar claramente entre los artefactos de diseño e implementación. En el caso de un desarrollo tecnológico los algoritmos son importantes como componente de diseño y los programas generalmente son irrelevantes y deben resumidos o agregados en anexos en el documento. Los programas no son importantes en el documento, salvo si se quiere explicar conceptos expecíficos del lenguaje o del algoritmo implementado.
-
-La redacción debe ser formal y de modo impersonal. No se debe utlizar primera persona del singular o plural. Se debe evitar el uso de cualquier calificativo sustituyéndolo siempre utilizando datos concretos y rastreables en documentos o publicaciones a través de referencias bibliográficas. Por ejemplo, no calificar algo como: "muy importante", "sustancial", "muy usadoo" o "mucho mejor".
-
-Las comparaciones deben concretarse con hechos y datos, sin frases ambiguas o términos generales. Por ejemplo, nunca se debe redactar frases como "el método es mejor que el método B". Lo correcto es decir, el error promedio de el método A es de 5 %, correspondiendo a la mitad del error de 10% obtenido utilizando el método B". El tiempo verbal es usualmente presente. No se debe perder de vista que se está explicando ”como hacer algo”, en vez de ”qué se hizo”. Todo aspecto circunstancial es irrelevante para el documento. Por ejemplo, si se ha desarrollado en el laboratorio X, o en el curso Y, con el profesor Z, etc.
+Como grupo debemos construir un sistema de vigilancia para la empresa ACME, y el guardia de la empresa quiere observar todas las caras detectadas en pantallas identificadas con un cuadrado rojo, para ello como grupo decidimos usar la librería OpenCV la cual nos ayudará en este trabajo. OpenCV es una librería que nos permite reconocer rostros en imágenes estáticas o en movimiento (videos), y tiene la particularidad de ser fácil de usar y de implementar, lo que haremos en esta oportunidad será instalar una IDE y descargar e instalar la librería para su correcto manejo, nuestro programa será implementado en código C++ y guardado en github.
 
 ### 1.1 Descripción del problema
-
-Dado el laboratorio describir como se entiende el problema bajo sus propias palabras.
+Se requiere crear un programa que al pasarle una imagen como parámetro, identifique todos los rostros humanos que encuentre y los encierre en un circulo rojo.
 
 ### 1.2 Objetivos 
 
 **Objetivo General**
 
-El fin que se desea llegar. (Comenzar con un verbo: "Construir un sistema...", "Desarrollar un sistema...", etc)
+Identificar rostros en una imagen usando la librería OpenCV.
 
 **Objetivos específicos**
 
-1. Objetivo 1
-2. Objetivo 2
-3. Objetivos 3
-
-Los objetivos específicos son acciones específicas que son desarrolladas para lograr cumplir el objetivo general, por ejemplo:
-
-1. Investigar  el  estado  del  arte  de  visión  por  computador  y  audio  para  resolver  tareas de  clasificación unimodal y multimodal aplicado  al  problema  de  reconocimiento  de emociones.
-2.  Seleccionar  uno  o  dos  métodos  estudiados  en  el  estado  del  arte  para  la  estimación  de  laemoción utilizando datos unimodales o multimodales.
-3.  Implementar los métodos seleccionados utilizando el lenguaje de programación Python y laslibrerías suministradas por Pytorch.
-4.  Validar  los  resultados  por  medio  bases  de  datos  especializadas  para  el  desarrollo  deaplicaciones basadas en la estimación de la emoción y que incluyan varios modos de atributoscomo: imágenes, sonido y/o texto.
-5.  Proponer  mejoras  a  los  modelos  implementados  para  mejorar  su  desempeño  en  futurasimplementaciones o proyectos de investigación.
-6.  Difundir los resultados en medios científicos nacionales o internacionales.
+1. Instalar la IDE Visual Studio Code
+2. Instalar la librería OpenCV
+3. Aprender funcionalidades de la librería
+4. Implementar las funciones en un programa
+5. Escanear rostros 
 
 ### 1.3 Solución propuesta
 
@@ -55,17 +40,13 @@ Esbozo de la solución propuesta, se espera que esta vaya evolucionando a medida
 
 ## 2. Materiales y métodos
 
-Explicar brevemente como se espera desarrollar el trabajo de implementación.
+Mediante tutoriales de youtube y documentación de OpenCV, instalaremos e implementaremos dicha librería para luego trabajar con ella.
 
 ### 2.1 Instalación
 
-Describir brevemente las librerías utilizadas para la instalación y programas utilizados para la ejecución del código. (Agregar una sección de anexo para describir como fueron instaladas las librerías de OpenCV y la IDE utilzada para el trabajo)
+Primero decidimos cuál IDE usar para este proyecto y nos decidimos por Visual Studio Code ya que es la recomendada por la documentación de OpenCV, luego la instalamos desde su página web (ver Anexo B). Una vez instalada la IDE, descargamos la librería OpenCV de su página web y configuramos Visual Studio Code para poder utilizarla (ver Anexo A).
 
-### 2.2 Diseño 
-
-Explicar los componentes (módulos o clases) utilizados para resolver el problema. Indicar arquitectura propuesta, diagrama de clases u otro artefacto que estime conveniente para explicar el diseño de su implimentación.
-
-### 2.3 Implementación
+### 2.2 Implementación
 
 Explicar brevemente algunos aspectos de implementación: Por ejemplo, detector de caras utilizado. Se pueden realizar pequeñas reseñas al código para indicar elementos importantes en el trabajo.
 
