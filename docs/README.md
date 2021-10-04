@@ -67,11 +67,11 @@ Se utilizó un CascadeClassifier que es un modelo preentrenado que provee OpenCV
 	8.	Point(cvRound((area.x + area.width - 1) * scale), cvRound((area.y + area.height - 1) * scale)), drawcolor);
 	9. }
 ```
-Primera línea: Declara un vector para almacenar los rostros.(Muy útil ya que un vector es un arreglo de tipo dinámico y no se sabe cuantos rostros se analizarán).
-Segunda línea: Detecta los rostros en una imagen luego de que esta ha sido pasada a la escala de grises y los almacena en en el vector faces.
-Cuarta línea: Empieza un ciclo for que iterara por todos los rostros que se hayan logrado identificar. Rostros que quedaron almacenados como datos de tipo Rect.
-Sexta línea: Declara el color que se utilizará para los cuadrados que encierran los rostros, es en BGR (Blue-Green-Red) 8-bits.
-Séptima y octava línea: Dibuja los rectangulos con la función rectangle(). Y usa como parámetros: la foto procesada, las coordenadas x e y del rostro gracias a que está almacenado como dato de tipo Rect, el color que se indica en este caso rojo y finalmente una variable llamada scale declarada anteriormente que se usa para cambiar la eficacia con que se detectan rostros. 
+- Primera línea: Declara un vector para almacenar los rostros.(Muy útil ya que un vector es un arreglo de tipo dinámico y no se sabe cuantos rostros se analizarán).
+- Segunda línea: Detecta los rostros en una imagen luego de que esta ha sido pasada a la escala de grises y los almacena en en el vector faces.
+- Cuarta línea: Empieza un ciclo for que iterara por todos los rostros que se hayan logrado identificar. Rostros que quedaron almacenados como datos de tipo Rect.
+- Sexta línea: Declara el color que se utilizará para los cuadrados que encierran los rostros, es en BGR (Blue-Green-Red) 8-bits.
+- Séptima y octava línea: Dibuja los rectangulos con la función rectangle(). Y usa como parámetros: la foto procesada, las coordenadas x e y del rostro gracias a que está almacenado como dato de tipo Rect, el color que se indica en este caso rojo y finalmente una variable llamada scale declarada anteriormente que se usa para cambiar la eficacia con que se detectan rostros. 
 
 ## 3. Resultados obtenidos
 
