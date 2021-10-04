@@ -8,10 +8,10 @@ using namespace std;
 
 Historia1::Historia1() 
 {
-	double scale = 0.2; // revisar donde va esto
+	double scale = 2; // aumenta el rendimiento al identificar rostros
 
 	CascadeClassifier faceCascade;
-	faceCascade.load("\\Users\\gcarv\\librerias\\opencv\\build\\etc\\haarcascades\\haarcascade_frontalface_alt.xml");
+	faceCascade.load("..\\opencv\\build\\etc\\haarcascades\\haarcascade_frontalface_alt.xml"); //usar path completo
 
 	string path = "Familia2.jpg";
 	Mat foto_familia = imread(path);
