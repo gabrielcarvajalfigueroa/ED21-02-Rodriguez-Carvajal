@@ -57,9 +57,9 @@ El código que se utilizo para realizar la identificación y posterior encierro 
 Se utilizó un CascadeClassifier que es un modelo preentrenado que provee OpenCV para la identificación de rostros, pero hay que tener en cuenta que solo está entrenado para identificar rostros de frente.
 
 ```c++
- 1. vector<Rect> faces;
+        1. vector<Rect> faces;
 	2. faceCascade.detectMultiScale(grayscale, faces, 1.1, 3, 0, Size(30, 30));
- 3. 
+        3. 
 	4. for (Rect area : faces)
 	5. {
 	6. Scalar drawcolor = Scalar(0, 0, 255);
