@@ -12,7 +12,7 @@
 
 ## Resumen 
 
-> Para esta primer entrega de nuestro taller, nos enfocamos en la instalación de las herramientas necesarias para trabajar. Primero nos informamos acerca de la librería OpenCV, aprendimos que sirve para trabajar con reconocimiento de patrones en imágenes, buscamos la mejor opción de IDE para trabajar con esta librería decidiéndonos por Visual Studio Code, ya que la mayoría de documentación recomendaba usar dicha IDE. Mediante videos tutoriales, leer documentación y un poco de ingenio de nuestra parte pudimos instalar tanto la IDE como la librería OpenCV. Una vez instaladas aprendimos a reconocer una imagen para completar la primera entrega de este taller.
+> Para esta primer entrega de nuestro taller, nos enfocamos en la instalación de las herramientas necesarias para trabajar. Primero nos informamos acerca de la librería OpenCV, aprendimos que sirve para trabajar con reconocimiento de patrones en imágenes, buscamos la mejor opción de IDE para trabajar con esta librería decidiéndonos por Visual Studio 2019, ya que la mayoría de documentación recomendaba usar dicha IDE. Mediante videos tutoriales, leer documentación y un poco de ingenio de nuestra parte pudimos instalar tanto la IDE como la librería OpenCV. Una vez instaladas aprendimos a reconocer una imagen para completar la primera entrega de este taller.
 ## 1. Introducción
 
 Como grupo debemos construir un sistema de vigilancia para la empresa ACME, y el guardia de la empresa quiere observar todas las caras detectadas en pantallas identificadas con un cuadrado rojo, para ello como grupo decidimos usar la librería OpenCV la cual nos ayudará en este trabajo. OpenCV es una librería que nos permite reconocer rostros en imágenes estáticas o en movimiento (videos), y tiene la particularidad de ser fácil de usar y de implementar, lo que haremos en esta oportunidad será instalar una IDE y descargar e instalar la librería para su correcto manejo, nuestro programa será implementado en código C++ y guardado en github.
@@ -28,7 +28,7 @@ Identificar rostros en una imagen usando la librería OpenCV.
 
 **Objetivos específicos**
 
-1. Instalar la IDE Visual Studio Code
+1. Instalar la IDE Visual Studio 2019
 2. Instalar la librería OpenCV
 3. Aprender funcionalidades de la librería
 4. Implementar las funciones en un programa
@@ -44,33 +44,34 @@ Mediante tutoriales de youtube y documentación de OpenCV, instalaremos e implem
 
 ### 2.1 Instalación
 
-Primero decidimos cuál IDE usar para este proyecto y nos decidimos por Visual Studio Code ya que es la recomendada por la documentación de OpenCV, luego la instalamos desde su página web (ver Anexo B). Una vez instalada la IDE, descargamos la librería OpenCV de su página web y configuramos Visual Studio Code para poder utilizarla (ver Anexo A).
+Primero decidimos cuál IDE usar para este proyecto y nos decidimos por Visual Studio 2019 ya que es la recomendada por la documentación de OpenCV, luego la instalamos desde su página web (ver Anexo B). Una vez instalada la IDE, descargamos la librería OpenCV de su página web y configuramos Visual Studio 2019 para poder utilizarla (ver Anexo A).
 
 ### 2.2 Implementación
 
-Explicar brevemente algunos aspectos de implementación: Por ejemplo, detector de caras utilizado. Se pueden realizar pequeñas reseñas al código para indicar elementos importantes en el trabajo.
+Para realizar la implementación utilizamos dos clases, Historia1 y MenuRial. MenuRial se encarga de desplegar una sencilla interfaz de usuario guiada (GUI) mostrando las opciones de historia y recibiendo input del usuario sólo por teclado. Al llamar la historia en el menú, se invoca a la clase Historia1 que se encarga de analizar la imagen y desplegarla en la pantalla con los rostros identificados. Todo esto sin hacer uso de herencia. El menu se inicia en el main.
 
-Por ejemplo, 
+El código que se utilizo para realizar la identificación y posterior encierro en un rectángulo rojo fue el siguiente:
 
-#### Detector de caras
+#### Identificador de rostros
 
-El detector de caras utilizado fue xxx. Para utilizarlo se debe.... El código para detectar una cara en una imagen se muestra a continuación:
+Se utilizó un CascadeClassifier que es un modelo preentrenado que provee OpenCV para la identificación de rostros, pero hay que tener en cuenta que solo está entrenado para identificar rostros de frente.
 
 ```c++
- 1. faceCascadePath = "./haarcascade_frontalface_default.xml";
- 2. faceCascade.load( faceCascadePath )
- 3. std::vector<Rect> faces;
- 4. faceCascade.detectMultiScale(frameGray, faces);
-
- 5. for ( size_t i = 0; i < faces.size(); i++ )
- 6. {
- 7.  int x1 = faces[i].x;
- 8.  int y1 = faces[i].y;
- 9.  int x2 = faces[i].x + faces[i].width;
-10.  int y2 = faces[i].y + faces[i].height;
-11. }
+ 1. vector<Rect> faces;
+	2. faceCascade.detectMultiScale(grayscale, faces, 1.1, 3, 0, Size(30, 30));
+ 3. 
+	4. for (Rect area : faces)
+	5. {
+	6. Scalar drawcolor = Scalar(0, 0, 255);
+	7.	rectangle(foto_familia, Point(cvRound(area.x * scale), cvRound(area.y * scale)),
+	8.	Point(cvRound((area.x + area.width - 1) * scale), cvRound((area.y + area.height - 1) * scale)), drawcolor);
+	9. }
 ```
-La primera linea carga el archivo de entrenamiento... etc
+Primera línea: Declara un vector para almacenar los rostros.(Muy útil ya que un vector es un arreglo de tipo dinámico y no se sabe cuantos rostros se analizarán).
+Segunda línea: Detecta los rostros en una imagen luego de que esta ha sido pasada a la escala de grises y los almacena en en el vector faces.
+Cuarta línea: Empieza un ciclo for que iterara por todos los rostros que se hayan logrado identificar. Rostros que quedaron almacenados como datos de tipo Rect.
+Sexta línea: Declara el color que se utilizará para los cuadrados que encierran los rostros, es en BGR (Blue-Green-Red) 8-bits.
+Séptima y octava línea: Dibuja los rectangulos con la función rectangle(). Y usa como parámetros: la foto procesada, las coordenadas x e y del rostro gracias a que está almacenado como dato de tipo Rect, el color que se indica en este caso rojo y finalmente una variable llamada scale declarada anteriormente que se usa para cambiar la eficacia con que se detectan rostros. 
 
 ## 3. Resultados obtenidos
 
