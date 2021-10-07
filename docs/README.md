@@ -34,10 +34,6 @@ Identificar rostros en una imagen usando la librería OpenCV.
 4. Implementar las funciones en un programa
 5. Escanear rostros 
 
-### 1.3 Solución propuesta
-
-Esbozo de la solución propuesta, se espera que esta vaya evolucionando a medida que se avanza en el proyecto.
-
 ## 2. Materiales y métodos
 
 Mediante tutoriales de youtube y documentación de OpenCV, instalaremos e implementaremos dicha librería para luego trabajar con ella.
@@ -73,16 +69,13 @@ Se utilizó un CascadeClassifier que es un modelo preentrenado que provee OpenCV
 - Sexta línea: Declara el color que se utilizará para los cuadrados que encierran los rostros, es en BGR (Blue-Green-Red) 8-bits.
 - Séptima y octava línea: Dibuja los rectangulos con la función rectangle(). Y usa como parámetros: la foto procesada, las coordenadas x e y del rostro gracias a que está almacenado como dato de tipo Rect, el color que se indica en este caso rojo y finalmente una variable llamada scale declarada anteriormente que se usa para cambiar la eficacia con que se detectan rostros. 
 
-## 3. Resultados obtenidos
-
-## 4. Conclusiones
-
 # Anexos
 
 ## Anexo A: Instalación librerías OpenCV
-
+Descargamos de la página oficial, https://opencv.org/releases/, la última versión (4.5.3) y descomprimimos el archivo ZIP en donde nos acomode más. Ahora debemos editar las variables de entorno de nuestro sistema, "Propiedades del sistema"->"Opciones avanzadas"->"Variables de entorno"->"PATH"->"Editar"->"Nuevo" y ponemos la dirección donde tengamos nuestra carpeta de OpenCV seguido de "\build\x64\vc15\bin", apretamos "Aceptar" y listo.
 ## Anexo B: Instalación de IDE y configuración librerías OpenCV
-
+Descargamos de la página oficial el instalador de Visual Studio 2019 (no confundir con Visual Studio Code), https://visualstudio.microsoft.com/es/downloads/, y lo ejecutamos, seguir la instalación normal de cualquier programa, al iniciarlo por primera vez nos preguntará para qué tipo de trabajo lo usaremos, escogemos "Desarrollo para el escritorio en C++".
+Una vez instalado crearemos un nuevo proyecto e iremos a la barra de herramientas en la parte superior de la pantalla, ahí daremos click a "Project"->"Proyecto Properties" y nos abrirá una ventana, ahí haremos lo siguiente: en "VC++ Directories"->"Include directories"->"Edit"->"New Line" e indicamos el directorio de nuestro OpenCV seguido de "\build\include" y apretamos OK; ahora en "Library directories" hacemos lo mismo pero al indicar el directorio, agregamos lo siguiente "\build\x64\vc15" y apretamos OK; ahora vamos a "Linker" y editamos "Additional dependencies" y escribimos lo siguiente: opencv_world453d.lib, el numero después de "world" variará según la versión instalada.
 # Referencia
 
 1. MONTERO, J.,Metodos matemáticos aplicados a la ganadería.3aed. Sevilla: Ediciones de la pradera,2007.
