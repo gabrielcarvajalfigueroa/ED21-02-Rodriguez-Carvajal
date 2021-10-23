@@ -51,39 +51,54 @@ Describir brevemente las librerías utilizadas para la instalación y programas 
 
 Para darle una mejor organización al código decidimos utilizar una clase llamada MenuRial la cual sólo tiene un constructor, pero dentro del constructor hace la implementación de un menú bastante simple para poder ir navegando entre las 2 historias ahora disponibles. La navegación de las funcionalidades se realiza con el teclado donde se puede ingresar la tecla que se indique ya sea en minúscula o mayúscula para poder acceder a la historia que se desee, por otro lado se puede utilizar el 0 para darle fin al programa.
 
-- insertar foto del menu
+![UCN](images/MenuUsuario.png)
 
 Luego de haber elegido una historia con uso del teclado, se llama a la clase de la historia que corresponda. Ambas clases son muy parecidas en el sentido de que se implementan en su constructor, se decidió esto ya que la implementación no es muy extensa en tema de líneas gracias a la librería. La diferencia que tienen estas clases es que como se puede ver en el diagrama la historia 2 se implementó haciendo uso de una clase llamada LinkedList que a su vez usa otra clase llamada Node, con el fin de implementar una LinkedList sin hacer uso de librerías y además solo con los métodos que realmente se utilizaron. Consideramos esto como ventaja ya que para mostrar el Top5 de rostros que aparecieron(Método que aún no está implementado en su totalidad debido a problemas con la comparación de rostros) se usó la siguiente función personalizada para mostrar las imágenes, esta función puede servir cuando se logre tener la LinkedList ordenada:
 
--mostrar codigo en lo posible
-
+```c++
+1. void LinkedList::show() {
+2.    // Muestra el top 5 y luego las destruye para dar el efecto de q se cerro la historia
+3.    Node* aux = first;
+4.    string top = "Top ";
+5.    for (int i = 1; i <= 5; i++) {
+6.        top = top + to_string(i);
+7.        cv::resize(aux->cara, aux->cara, cv::Size(), 4, 4);
+8.        cv::imshow(top, aux->cara);
+9.        aux = aux->next;
+10.       top = "Top ";
+11.   }
+12.   cv::waitKey(0); // Para q las imagenes mostradas no desaparezcan
+13.   for (int i = 1; i <= 5; i++) {
+14.       top = top + to_string(i);
+15.       cv::destroyWindow(top);
+16.       top = "Top ";
+17.   }
+18.}
+```
 
 ### 2.3 Implementación
 
-Explicar brevemente algunos aspectos de implementación: Por ejemplo, detector de caras utilizado. Se pueden realizar pequeñas reseñas al código para indicar elementos importantes en el trabajo.
+Para poder lograr la implementación de la historia 2 se usó un código muy parecido al de la historia anterior la diferencia fue el tener que añadir las caras a la linkedlist, esta linkedlist almacena las caras en un tipo de dato llamado Mat que se tiene gracias a la librería, el problema es que la función que detecta las caras y las almacena en un vector almacena datos de tipo Rect. Este tipo de dato no nos sirve para trabajar ya que si deseamos mostrar fotos por pantalla o trabajar con imágenes se trabaja generalemente con datos de tipo Mat. Pero lo bueno de este tipo de dato (Rect) es que nos entrega las coordenadas de la cara en el frame, esto si resulta muy útil ya que podemos recortar la imagen del frame y así obtener el rostro como tipo Mat.
 
-Por ejemplo, 
+#### Almacenamiento en LinkedList
 
-#### Detector de caras
-
-El detector de caras utilizado fue xxx. Para utilizarlo se debe.... El código para detectar una cara en una imagen se muestra a continuación:
+Este es el código que se utilizó para poder conseguir las caras en tipo de dato Mat y asi poder almacenarlas en la LinkedList:
 
 ```c++
- 1. faceCascadePath = "./haarcascade_frontalface_default.xml";
- 2. faceCascade.load( faceCascadePath )
- 3. std::vector<Rect> faces;
- 4. faceCascade.detectMultiScale(frameGray, faces);
-
- 5. for ( size_t i = 0; i < faces.size(); i++ )
- 6. {
- 7.  int x1 = faces[i].x;
- 8.  int y1 = faces[i].y;
- 9.  int x2 = faces[i].x + faces[i].width;
-10.  int y2 = faces[i].y + faces[i].height;
-11. }
+1. LinkedList listacaras = LinkedList();
+2.	for (Rect area : faces){
+3.	 Rect roi(Point(cvRound(area.x * scale), cvRound(area.y * scale)),
+4.		Point(cvRound((area.x + area.width - 1) * scale), cvRound((area.y + area.height - 1) * scale)))
+5.		listacaras.add(foto_familia(roi));
+6.	}
+7.	listacaras.show();
 ```
-La primera linea carga el archivo de entrenamiento... etc
-
+- Primera línea: Crea la LinkedList a utilizar para almacenar las caras.
+- Segunda línea: Inicializa un ciclo for que itera por un vector donde están almacenadas todas las caras como tipo de dato Rect.
+- Tercera y Cuarta línea: Se le pasan las coordenadas del rostro a la función roi() para luego poder recortar la cara del frame principal.
+- Quinta línea: Añade la cara a la linked list, se utiliza roi dentro de la función para mandar la cara recortada.
+- Séptima línea: Utiliza el método explicado anteriormente para poder desplegar el top5 de caras.
+- 
 ## 3. Resultados obtenidos
 
 ## 4. Conclusiones
