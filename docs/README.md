@@ -98,7 +98,7 @@ Este es el código que se utilizó para poder conseguir las caras en tipo de dat
 - Tercera y Cuarta línea: Se le pasan las coordenadas del rostro a la función roi() para luego poder recortar la cara del frame principal.
 - Quinta línea: Añade la cara a la linked list, se utiliza roi dentro de la función para mandar la cara recortada.
 - Séptima línea: Utiliza el método explicado anteriormente para poder desplegar el top5 de caras.
-- 
+
 ## 3. Resultados obtenidos
 
 ## 4. Conclusiones
