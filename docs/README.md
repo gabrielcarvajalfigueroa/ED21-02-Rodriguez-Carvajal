@@ -46,7 +46,17 @@ Describir brevemente las librerías utilizadas para la instalación y programas 
 
 ### 2.2 Diseño 
 
-Explicar los componentes (módulos o clases) utilizados para resolver el problema. Indicar arquitectura propuesta, diagrama de clases u otro artefacto que estime conveniente para explicar el diseño de su implimentación.
+
+![UCN](images/DiagramaHistoria2.png)
+
+Para darle una mejor organización al código decidimos utilizar una clase llamada MenuRial la cual sólo tiene un constructor, pero dentro del constructor hace la implementación de un menú bastante simple para poder ir navegando entre las 2 historias ahora disponibles. La navegación de las funcionalidades se realiza con el teclado donde se puede ingresar la tecla que se indique ya sea en minúscula o mayúscula para poder acceder a la historia que se desee, por otro lado se puede utilizar el 0 para darle fin al programa.
+
+- insertar foto del menu
+
+Luego de haber elegido una historia con uso del teclado, se llama a la clase de la historia que corresponda. Ambas clases son muy parecidas en el sentido de que se implementan en su constructor, se decidió esto ya que la implementación no es muy extensa en tema de líneas gracias a la librería. La diferencia que tienen estas clases es que como se puede ver en el diagrama la historia 2 se implementó haciendo uso de una clase llamada LinkedList que a su vez usa otra clase llamada Node, con el fin de implementar una LinkedList sin hacer uso de librerías y además solo con los métodos que realmente se utilizaron. Consideramos esto como ventaja ya que para mostrar el Top5 de rostros que aparecieron(Método que aún no está implementado en su totalidad debido a problemas con la comparación de rostros) se usó la siguiente función personalizada para mostrar las imágenes, esta función puede servir cuando se logre tener la LinkedList ordenada:
+
+-mostrar codigo en lo posible
+
 
 ### 2.3 Implementación
 
