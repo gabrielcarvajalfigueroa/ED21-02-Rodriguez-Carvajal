@@ -14,9 +14,9 @@
 
 ### Resumen
 
-<Agregar el resumen del reporte técnico>
+Con el algoritmo de reconocimiento de caras listo, nos dedicamos a hacer que el programa guarde las caras en una lista con nexo.
 
-<Colocar alguna imágen en la portada>
+![UCN](images/ResultadoH1.png)
 
 ### Documentos
 
