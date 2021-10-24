@@ -16,7 +16,7 @@
 
 Con el algoritmo de reconocimiento de caras listo, nos dedicamos a hacer que el programa guarde las caras en una lista con nexo.
 
-![UCN](images/ResultadoH1.png)
+![UCN](docs/images/ResultadoH1.png)
 
 ### Documentos
 
