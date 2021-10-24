@@ -99,9 +99,7 @@ Este es el código que se utilizó para poder conseguir las caras en tipo de dat
 - Séptima línea: Utiliza el método explicado anteriormente para poder desplegar el top5 de caras.
 
 ## 3. Resultados obtenidos
-Al inicializar el programa y elegir la "Historia 2" se despliega lo siguiente:![UCN](images/ResultadoH1.png)
-
-El programa detecta los rostros correctamente, luego despliega lo siguiente: ![UCN](images/ResultadoH2.png)
+Al inicializar el programa y elegir la "Historia 2" se despliega lo siguiente:![UCN](images/ResultadoH2.png)
 
 Podemos comprobar entonces que nuestro programa funciona, reconoce rostros y los guarda.
 
