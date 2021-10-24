@@ -42,8 +42,7 @@ Lenguaje de programación C++, librería OpenCV.
 
 ### 2.1 Instalación
 
-Describir brevemente las librerías utilizadas para la instalación y programas utilizados para la ejecución del código. (Agregar una sección de anexo para describir como fueron instaladas las librerías de OpenCV y la IDE utilzada para el trabajo)
-
+Primero decidimos cuál IDE usar para este proyecto y nos decidimos por Visual Studio 2019 ya que es la recomendada por la documentación de OpenCV, luego la instalamos desde su página web (ver Anexo B). Una vez instalada la IDE, descargamos la librería OpenCV de su página web y configuramos Visual Studio 2019 para poder utilizarla (ver Anexo A).
 ### 2.2 Diseño 
 
 
@@ -106,8 +105,10 @@ Este es el código que se utilizó para poder conseguir las caras en tipo de dat
 # Anexos
 
 ## Anexo A: Instalación librerías OpenCV
-
+Descargamos de la página oficial, https://opencv.org/releases/, la última versión (4.5.3) y descomprimimos el archivo ZIP en donde nos acomode más. Ahora debemos editar las variables de entorno de nuestro sistema, "Propiedades del sistema"->"Opciones avanzadas"->"Variables de entorno"->"PATH"->"Editar"->"Nuevo" y ponemos la dirección donde tengamos nuestra carpeta de OpenCV seguido de "\build\x64\vc15\bin", apretamos "Aceptar" y listo.
 ## Anexo B: Instalación de IDE y configuración librerías OpenCV
+Descargamos de la página oficial el instalador de Visual Studio 2019 (no confundir con Visual Studio Code), https://visualstudio.microsoft.com/es/downloads/, y lo ejecutamos, seguir la instalación normal de cualquier programa, al iniciarlo por primera vez nos preguntará para qué tipo de trabajo lo usaremos, escogemos "Desarrollo para el escritorio en C++".
+Una vez instalado crearemos un nuevo proyecto e iremos a la barra de herramientas en la parte superior de la pantalla, ahí daremos click a "Project"->"Proyecto Properties" y nos abrirá una ventana, ahí haremos lo siguiente: en "VC++ Directories"->"Include directories"->"Edit"->"New Line" e indicamos el directorio de nuestro OpenCV seguido de "\build\include" y apretamos OK; ahora en "Library directories" hacemos lo mismo pero al indicar el directorio, agregamos lo siguiente "\build\x64\vc15" y apretamos OK; ahora vamos a "Linker" y editamos "Additional dependencies" y escribimos lo siguiente: opencv_world453d.lib, el numero después de "world" variará según la versión instalada.
 
 # Referecia
 
