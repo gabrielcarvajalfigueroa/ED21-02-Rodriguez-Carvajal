@@ -99,9 +99,14 @@ Este es el código que se utilizó para poder conseguir las caras en tipo de dat
 - Séptima línea: Utiliza el método explicado anteriormente para poder desplegar el top5 de caras.
 
 ## 3. Resultados obtenidos
+Al inicializar el programa y elegir la "Historia 2" se despliega lo siguiente:![UCN](images/ResultadoH1.png)
+
+El programa detecta los rostros correctamente, luego despliega lo siguiente: ![UCN](images/ResultadoH2.png)
+
+Podemos comprobar entonces que nuestro programa funciona, reconoce rostros y los guarda.
 
 ## 4. Conclusiones
-
+La implementación de una LinkedList en nuestro programa nos solucionó el problema de almacenamiento de rostros, además es una clase fácilmente personalizable en la cual podemos seguir añadiendo funcionalidades como búsqueda de rostros o conteo. De todas maneras nuestro código cumple con la funcionalidad pero no con el orden, limpieza y formalidad, trabajaremos para darle una estructura y sentido definidos. 
 # Anexos
 
 ## Anexo A: Instalación librerías OpenCV
@@ -110,7 +115,7 @@ Descargamos de la página oficial, https://opencv.org/releases/, la última vers
 Descargamos de la página oficial el instalador de Visual Studio 2019 (no confundir con Visual Studio Code), https://visualstudio.microsoft.com/es/downloads/, y lo ejecutamos, seguir la instalación normal de cualquier programa, al iniciarlo por primera vez nos preguntará para qué tipo de trabajo lo usaremos, escogemos "Desarrollo para el escritorio en C++".
 Una vez instalado crearemos un nuevo proyecto e iremos a la barra de herramientas en la parte superior de la pantalla, ahí daremos click a "Project"->"Proyecto Properties" y nos abrirá una ventana, ahí haremos lo siguiente: en "VC++ Directories"->"Include directories"->"Edit"->"New Line" e indicamos el directorio de nuestro OpenCV seguido de "\build\include" y apretamos OK; ahora en "Library directories" hacemos lo mismo pero al indicar el directorio, agregamos lo siguiente "\build\x64\vc15" y apretamos OK; ahora vamos a "Linker" y editamos "Additional dependencies" y escribimos lo siguiente: opencv_world453d.lib, el numero después de "world" variará según la versión instalada.
 
-# Referecia
+# Referencia
 
 Indicar los libros, páginas web, documentos, etc. Utilizados en el trabajo. Por ejemplo:
 
