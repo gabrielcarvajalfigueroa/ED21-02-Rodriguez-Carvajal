@@ -48,49 +48,78 @@ Lenguaje de programación C++, librería OpenCV.
 
 ![DiagramaClasesRealease0 3](https://user-images.githubusercontent.com/83176877/144719851-fe7e5bc6-9ee1-438b-8861-f10c8627575b.png)
 
-La arquitectura que se utilizo para la entrega anterior se mantuvo ya que la arquitectura fue pensada para que se pudieran seguir añadiendo historias independientemente sin tener que afectar la funcionalidad del programa. Esto es muy util ya que como se puede ver en la clase MenuRial se levanta una interfaz grafica que puede recibir input por teclado usando la funcion de OpenCv waitKey(0); y con el parametro 0 ya queda esperando el input por un tiempo indefinido. Entonces recibe un input de int que se almacena en una variable que se compara en un if anidado con otros enteros que son las representaciones de las letras que aparecen pero en codigo ASCII, por eso se trabaja con un entero. Luego cuando entra en el if que corresponde activa la historia que corresponde. Y finalmente toda esta logica ocurre dentro de un do-while que se cierra cuando el usuario presiona 0. Es importante que se use el do-while porque la interfaz debe desplegarse al menos una vez.
+La arquitectura que se utilizo para la entrega anterior se mantuvo ya que la arquitectura fue pensada para que se pudieran seguir añadiendo historias independientemente sin tener que afectar la funcionalidad del programa. Esto es muy util ya que en la clase MenuRial se levanta una interfaz grafica que puede recibir input por teclado usando la funcion de OpenCv waitKey(0); y con el parametro 0 ya que debe quedar esperando el input por un tiempo indefinido. Luego recibe un input de int que se almacena en una variable que se compara en un if anidado con otros enteros que son las representaciones de las letras (que aparecen la imagen de abajo) pero en codigo ASCII, por eso se trabaja con un entero. Luego cuando entra en el if que corresponde activa la historia que corresponde. Y finalmente toda esta logica ocurre dentro de un do-while que se cierra cuando el usuario presiona 0. Es importante que se use el do-while porque la interfaz debe desplegarse al menos una vez.
 
 ![MenuUsuarioRelease0 3](https://user-images.githubusercontent.com/83176877/144721142-c7fb52b7-712c-458a-88ce-fab9e0c805de.png)
 
-mostrar menu usuario nuevo
-
-```c++
-1. void LinkedList::show() {
-2.    // Muestra el top 5 y luego las destruye para dar el efecto de q se cerro la historia
-3.    Node* aux = first;
-4.    string top = "Top ";
-5.    for (int i = 1; i <= 5; i++) {
-6.        top = top + to_string(i);
-7.        cv::resize(aux->cara, aux->cara, cv::Size(), 4, 4);
-8.        cv::imshow(top, aux->cara);
-9.        aux = aux->next;
-10.       top = "Top ";
-11.   }
-12.   cv::waitKey(0); // Para q las imagenes mostradas no desaparezcan
-13.   for (int i = 1; i <= 5; i++) {
-14.       top = top + to_string(i);
-15.       cv::destroyWindow(top);
-16.       top = "Top ";
-17.   }
-18.}
-```
+En esta imagen se puede observar la GUI que se utilizó para esta entrega, donde se añadieron las historias 3 y 5. Esta GUI como se hablaba arriba funciona con input por teclado solo con el fin de hacer mas facil el acceso a las historias a la hora del testeo y tambien porque es mejor que hacerlo por consola. Al presionar la tecla de la historia el programa recibe el valor por teclado en codigo ASCII y lo compara en un if, todo este codigo puede encontrarse en el archivo MenuRial.cpp.
 
 ### Historia 1
 ![608c93566e15ef0dd332238ebe374632](https://user-images.githubusercontent.com/83176877/144720921-8cfdfc8d-24bd-43f7-9154-67385bf3cd33.gif)
+
+Como se observa en el gif ahora la historia funciona con un video, en este caso un video entregado por el profesor y que está en formato mp4. La logica de identificar las caras y encerrarlas en un cuadrado se mantiene lo unico que cambio fue que se necesito una forma de poder conseguir los frames del video para asi poder ir pasando frame por frame a un codigo que identeficara los rostros. El poder iterar frame por frame se logro con una clase de OpenCV llamada VideoCapture y la logica detras de la historia seria la siguiente:
+
+```c++
+1.  // Se crea un objeo de la clase VideoCapture que recibe el video en formato mp4
+2.  VideoCapture cap("Video-Practica.mp4");
+3. // En esta variable se almacenara el frame en el que vaya la iteracion para luego analizarlo
+4. Mat frame_del_video;
+5. while(1){
+6.    cap.read(frame_del_video);
+7.    // logica que encierra y identifica los rostros
+8.    // trabaja con la variable frame_del_video que se va actualizando por cada iteracion
+9. }
+```
 
 ### Historia 2
 
 ### Historia 3
 ![Historia3Intro](https://user-images.githubusercontent.com/83176877/144721365-8f2862fb-0d34-4124-b9b1-c9e345a66840.png)
 
+En este caso se varió un poco y se presento la historia en la consola en lugar de hacerlo con una GUI. Esta historia puntualmente pedia que se pudiera elegir una hora de inicio y fin para cortar el video, porque el programa estaba pensado para hacerse con un video de seguridad. Pero como el video que utilizamos duraba apenas 1 minuto con 16 segundos. se decidió dar la opción de dividir el video en cuatro partes y que el usuario pueda elegir con cual trabajar ingresando un número del 1 al 4 por teclado. Como resultado el video se analiza y finalmente entrega la cantidad de personas que aparecieron en la sección del video. Cada persona que va identificando se añade a un árbol binario dentro de un nodo junto con su respectivo ID.
+
 ![ce440c09fd5b08081cbe87a8675c5f0f](https://user-images.githubusercontent.com/83176877/144721969-0ef504c6-a99e-4cf5-8228-4a3fc7031752.gif)
 
+En el gif se puede ver como analiza frame por frame los rostros que recibe de la sección del video, donde calcula la distancia euclidiana entre frames para decidir si es el mismo rostro o si debe añadirlo al árbol binario.
+
+La clase del arbol binario tiene un atributo int llamado counter que lleva cuenta de cuantos id hay en árbol, entonces para facilitar el tema de saber cuantas personas aparecieron se añadió una función get a la clase del árbol para así poder obtener la variable counter, esto debido a que es una variable privada. Es importante tener en cuenta a la hora de probar el programa que en caso de ser un video muy largo se requiere un pc con buenos componentes ya que en este caso en particular el video de 1 minuto con 16 segundos tiene 2425 frames, y como se divide en 4 partes se trabaja con mínimo 600 frames.
+
+La lógica para poder trabajar con el video en cuatro partes no es muy difícil solo hay que usar el concepto de que se pueden leer frames y no usarlos, así hasta llegar al frame deseado. Por lo que se usa un contador para saber en que frame va la iteración y con un par de if para saber cuando empezar a analizar las imagenes y otro para saber cuando terminar de analizar. Con eso en mente la lógica seria la siguiente.
+
+```c++
+1.      int cuartoATrabjar;
+2.	cin >> cuartoATrabjar;
+3.	int frames_totales = calcularFramesTotales("Video-Practica.mp4"); // la funcion retorna el total de frames -- implementada por nosotros
+4.
+5.	cout << "El cuarto elegido fue: " << cuartoATrabjar << endl;
+6.	cout << "El total de frames: " << frames_totales << endl;
+7.	
+8.	Mat image; // imagen para trabjar
+9.	while (1) { 
+10.		video.read(image);
+11.		
+12.		// esta operacion deja trabajar en el ciclo que corresponda
+13.		if ((( (cuartoATrabjar - 1) * frames_totales) / 4) <= cont) {
+14.			//La magia
+15.			// se cuenta la cantidad de personas que aparecieron en esa parte del video
+16.			// Leemos todas las caras de los archivos de imágenes y las insertamos en el árbol
+17.		}
+18.		if (cont == ((cuartoATrabjar * frames_totales) / 4)) {
+19.			cout << "salio del ciclo" << endl;
+20.			break;
+21.		} 
+22.		cont++;
+23.	}
+24.  // Entrega el total de personas que aparecieron en la seccion del video para asi finalizar con la historia
+25.	cout << "EL TOTAL DE PERSONAS IDENTIFICADAS FUE DE: " << abb.getCounter() << endl;
+```
 
 
 ### Historia 5
 ![Historia5](https://user-images.githubusercontent.com/83176877/144721059-09aee193-34b3-417f-a2a4-2068019cfae3.png)
 
-codigo para mostrar historia 5
+Esta historia es más simple en comparación a las demás, cuando se activa guarda el video que se estaba usando para las distintas historias. Lo guarda en formato .avi también usando las facilidades que entrega la librería OpenCV. Queda almacenado con el nombre "CopiaDeSeguridad" en la misma carpeta en la que está el proyecto. De hecho el código de abajo es todo el código que se utiliza, que queda bastante claro al estar completamente documentado.
+
 ```c++
 1.  // Crea el objeto para capturar video se le entrega el video utilizado
 2.  cv::VideoCapture video("Video-Practica.mp4");
