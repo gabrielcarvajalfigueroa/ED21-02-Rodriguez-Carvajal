@@ -48,7 +48,7 @@ Lenguaje de programación C++, librería OpenCV.
 
 ![DiagramaClasesRealease0 3](https://user-images.githubusercontent.com/83176877/144719851-fe7e5bc6-9ee1-438b-8861-f10c8627575b.png)
 
-explicar organizacion diagrama
+La arquitectura que se utilizo para la entrega anterior se mantuvo ya que la arquitectura fue pensada para que se pudieran seguir añadiendo historias independientemente sin tener que afectar la funcionalidad del programa. Esto es muy util ya que como se puede ver en la clase MenuRial se levanta una interfaz grafica que puede recibir input por teclado usando la funcion de OpenCv waitKey(0); y con el parametro 0 ya queda esperando el input por un tiempo indefinido. Entonces recibe un input de int que se almacena en una variable que se compara en un if anidado con otros enteros que son las representaciones de las letras que aparecen pero en codigo ASCII, por eso se trabaja con un entero. Luego cuando entra en el if que corresponde activa la historia que corresponde. Y finalmente toda esta logica ocurre dentro de un do-while que se cierra cuando el usuario presiona 0. Es importante que se use el do-while porque la interfaz debe desplegarse al menos una vez.
 
 ![MenuUsuarioRelease0 3](https://user-images.githubusercontent.com/83176877/144721142-c7fb52b7-712c-458a-88ce-fab9e0c805de.png)
 
@@ -83,29 +83,33 @@ mostrar menu usuario nuevo
 ### Historia 3
 ![Historia3Intro](https://user-images.githubusercontent.com/83176877/144721365-8f2862fb-0d34-4124-b9b1-c9e345a66840.png)
 
+![ce440c09fd5b08081cbe87a8675c5f0f](https://user-images.githubusercontent.com/83176877/144721969-0ef504c6-a99e-4cf5-8228-4a3fc7031752.gif)
+
+
+
 ### Historia 5
 ![Historia5](https://user-images.githubusercontent.com/83176877/144721059-09aee193-34b3-417f-a2a4-2068019cfae3.png)
 
 codigo para mostrar historia 5
 ```c++
-1. void LinkedList::show() {
-2.    // Muestra el top 5 y luego las destruye para dar el efecto de q se cerro la historia
-3.    Node* aux = first;
-4.    string top = "Top ";
-5.    for (int i = 1; i <= 5; i++) {
-6.        top = top + to_string(i);
-7.        cv::resize(aux->cara, aux->cara, cv::Size(), 4, 4);
-8.        cv::imshow(top, aux->cara);
-9.        aux = aux->next;
-10.       top = "Top ";
-11.   }
-12.   cv::waitKey(0); // Para q las imagenes mostradas no desaparezcan
-13.   for (int i = 1; i <= 5; i++) {
-14.       top = top + to_string(i);
-15.       cv::destroyWindow(top);
-16.       top = "Top ";
-17.   }
-18.}
+1.  // Crea el objeto para capturar video se le entrega el video utilizado
+2.  cv::VideoCapture video("Video-Practica.mp4");
+3.  // Esta variable guardara los distintos frames del Video-Practica.mp4 para copiarlos
+4.  cv::Mat frame;
+5.  // Se consigue la resolucion del frame para una funcion a utilizar posteriormente
+6.  int frameWidth = video.get(cv::CAP_PROP_FRAME_WIDTH);
+7.  int frameHeigth = video.get(cv::CAP_PROP_FRAME_HEIGHT);
+8.  // Objeto para escribir el nuevo video --  video tendra el nombre copiadeseguridad debido a la historia pedida
+9.  cv::VideoWriter output("CopiaDeSeguridad.avi", cv::VideoWriter::fourcc('M', 'J', 'P', 'G'), 30, cv::Size(frameWidth, frameHeigth));
+10. // Se itera por todos los frames que entrega el video practica
+11. while (video.read(frame)){
+12.   // Escribe el frame en la copia del video
+13.   output.write(frame);
+14. }
+15. // se cierran ambos videos, actua como destructor para desocupar memoria
+16. output.release();
+17. video.release();
+18. }
 ```
 
 ### 2.2 Implementación
