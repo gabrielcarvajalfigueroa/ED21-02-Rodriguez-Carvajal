@@ -46,15 +46,47 @@ Lenguaje de programación C++, librería OpenCV.
 ### 2.1 Diseño 
 
 
-![UCN](images/DiagramaHistoria2.png)
 ![DiagramaClasesRealease0 3](https://user-images.githubusercontent.com/83176877/144719851-fe7e5bc6-9ee1-438b-8861-f10c8627575b.png)
 
-Para darle una mejor organización al código decidimos utilizar una clase llamada MenuRial la cual sólo tiene un constructor, pero dentro del constructor hace la implementación de un menú bastante simple para poder ir navegando entre las 2 historias ahora disponibles. La navegación de las funcionalidades se realiza con el teclado donde se puede ingresar la tecla que se indique ya sea en minúscula o mayúscula para poder acceder a la historia que se desee, por otro lado se puede utilizar el 0 para darle fin al programa.
+explicar organizacion diagrama
 
-![UCN](images/MenuUsuario.png)
+![MenuUsuarioRelease0 3](https://user-images.githubusercontent.com/83176877/144721142-c7fb52b7-712c-458a-88ce-fab9e0c805de.png)
 
-Luego de haber elegido una historia con uso del teclado, se llama a la clase de la historia que corresponda. Ambas clases son muy parecidas en el sentido de que se implementan en su constructor, se decidió esto ya que la implementación no es muy extensa en tema de líneas gracias a la librería. La diferencia que tienen estas clases es que como se puede ver en el diagrama la historia 2 se implementó haciendo uso de una clase llamada LinkedList que a su vez usa otra clase llamada Node, con el fin de implementar una LinkedList sin hacer uso de librerías y además solo con los métodos que realmente se utilizaron. Consideramos esto como ventaja ya que para mostrar el Top5 de rostros que aparecieron(Método que aún no está implementado en su totalidad debido a problemas con la comparación de rostros) se usó la siguiente función personalizada para mostrar las imágenes, esta función puede servir cuando se logre tener la LinkedList ordenada:
+mostrar menu usuario nuevo
 
+```c++
+1. void LinkedList::show() {
+2.    // Muestra el top 5 y luego las destruye para dar el efecto de q se cerro la historia
+3.    Node* aux = first;
+4.    string top = "Top ";
+5.    for (int i = 1; i <= 5; i++) {
+6.        top = top + to_string(i);
+7.        cv::resize(aux->cara, aux->cara, cv::Size(), 4, 4);
+8.        cv::imshow(top, aux->cara);
+9.        aux = aux->next;
+10.       top = "Top ";
+11.   }
+12.   cv::waitKey(0); // Para q las imagenes mostradas no desaparezcan
+13.   for (int i = 1; i <= 5; i++) {
+14.       top = top + to_string(i);
+15.       cv::destroyWindow(top);
+16.       top = "Top ";
+17.   }
+18.}
+```
+
+### Historia 1
+![608c93566e15ef0dd332238ebe374632](https://user-images.githubusercontent.com/83176877/144720921-8cfdfc8d-24bd-43f7-9154-67385bf3cd33.gif)
+
+### Historia 2
+
+### Historia 3
+![Historia3Intro](https://user-images.githubusercontent.com/83176877/144721365-8f2862fb-0d34-4124-b9b1-c9e345a66840.png)
+
+### Historia 5
+![Historia5](https://user-images.githubusercontent.com/83176877/144721059-09aee193-34b3-417f-a2a4-2068019cfae3.png)
+
+codigo para mostrar historia 5
 ```c++
 1. void LinkedList::show() {
 2.    // Muestra el top 5 y luego las destruye para dar el efecto de q se cerro la historia
