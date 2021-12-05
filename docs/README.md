@@ -75,6 +75,8 @@ Como se observa en el gif ahora la historia funciona con un video, en este caso 
 
 ### Historia 2
 
+No se pudo realizar completamente por problemas con el heap tree.
+
 ### Historia 3
 ![Historia3Intro](https://user-images.githubusercontent.com/83176877/144721365-8f2862fb-0d34-4124-b9b1-c9e345a66840.png)
 
