@@ -145,12 +145,12 @@ Esta historia es más simple en comparación a las demás, cuando se activa guar
 
 
 ## 3. Resultados obtenidos
-Al inicializar el programa y elegir la "Historia 2" se despliega lo siguiente:![UCN](images/ResultadoH2.png)
+En lo que respecta a las historias 1, 2 y 3, se puede establecer una comparación ya que todas trabajan con el procesamiento de imágenes. Se pudo observar lo mucho que cambia la velocidad del procesamiento de datos en las distintas historias. La historia 1 es capaz de desplegar el video a velocidad normal a pesar de tener que procesar los datos para agregarles los cuadrados a las caras. En cambio la historia 3 baja mucho su velocidad al momento de procesar imágenes debido al uso del árbol además de las comparaciones que debe hacer con el uso de la distancia euclidiana, claramente el pc y la cantidad de datos procesados también son un factor al momento de ver la velocidad. Pero aún así resulta efectivo trabajar con arboles aunque sean simples como el binario ya que ayuda con la búsqueda y con la inserción, todo esto si es que se tiene un buen criterio para diferenciar los nodos del árbol.
 
-Podemos comprobar entonces que nuestro programa funciona, reconoce rostros y los guarda.
+Por otro lado, la historia 5 logra procesar todas las imágenes del video en este caso 2425 como ya se mencionó anteriormente. Un defecto que tiene esta historia, dependiendo de para que se le quiera es que guarda el video sin audio, debido a que sólo trabaja con los frames entonces el audio se pierde. Pero tomando en cuenta que la intención del taller era solo poder ver personas y nada relacionado con el audio, no debería ser un problema del que preocuparse.
 
 ## 4. Conclusiones
-La implementación de árboles en nuestro programa nos permitió aumentar las funcionalidades de nuestro programa, pudiendo trabajar con una gran cantidad de datos de una mejor manera; sin embargo, su implementación también supuso un desafío al momento de decidir qué tipo de árbol convenía en cada historia, de todos modos pudimos comprobar que los árboles mejoran la capacidad de búsqueda y orden de las listas enlazadas, adecuándose mejor a nuestro programa.
+La implementación de una LinkedList en nuestro programa nos solucionó el problema de almacenamiento de rostros, además es una clase fácilmente personalizable en la cual podemos seguir añadiendo funcionalidades como búsqueda de rostros o conteo. De todas maneras nuestro código cumple con la funcionalidad pero no con el orden, limpieza y formalidad, trabajaremos para darle una estructura y sentido definidos. 
 # Anexos
 
 ## Anexo A: Instalación librerías OpenCV
