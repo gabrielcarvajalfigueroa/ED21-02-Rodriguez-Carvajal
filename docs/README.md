@@ -150,7 +150,7 @@ Al inicializar el programa y elegir la "Historia 2" se despliega lo siguiente:![
 Podemos comprobar entonces que nuestro programa funciona, reconoce rostros y los guarda.
 
 ## 4. Conclusiones
-La implementación de una LinkedList en nuestro programa nos solucionó el problema de almacenamiento de rostros, además es una clase fácilmente personalizable en la cual podemos seguir añadiendo funcionalidades como búsqueda de rostros o conteo. De todas maneras nuestro código cumple con la funcionalidad pero no con el orden, limpieza y formalidad, trabajaremos para darle una estructura y sentido definidos. 
+La implementación de árboles en nuestro programa nos permitió aumentar las funcionalidades de nuestro programa, pudiendo trabajar con una gran cantidad de datos de una mejor manera; sin embargo, su implementación también supuso un desafío al momento de decidir qué tipo de árbol convenía en cada historia, de todos modos pudimos comprobar que los árboles mejoran la capacidad de búsqueda y orden de las listas enlazadas, adecuándose mejor a nuestro programa.
 # Anexos
 
 ## Anexo A: Instalación librerías OpenCV
