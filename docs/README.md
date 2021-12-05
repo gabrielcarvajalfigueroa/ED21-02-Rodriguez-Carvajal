@@ -54,6 +54,8 @@ La arquitectura que se utilizo para la entrega anterior se mantuvo ya que la arq
 
 En esta imagen se puede observar la GUI que se utilizó para esta entrega, donde se añadieron las historias 3 y 5. Esta GUI como se hablaba arriba funciona con input por teclado solo con el fin de hacer mas facil el acceso a las historias a la hora del testeo y tambien porque es mejor que hacerlo por consola. Al presionar la tecla de la historia el programa recibe el valor por teclado en codigo ASCII y lo compara en un if, todo este codigo puede encontrarse en el archivo MenuRial.cpp.
 
+### 2.2 Implementación
+
 ### Historia 1
 ![608c93566e15ef0dd332238ebe374632](https://user-images.githubusercontent.com/83176877/144720921-8cfdfc8d-24bd-43f7-9154-67385bf3cd33.gif)
 
@@ -141,28 +143,6 @@ Esta historia es más simple en comparación a las demás, cuando se activa guar
 18. }
 ```
 
-### 2.2 Implementación
-
-Para poder lograr la implementación de la historia 2 se usó un código muy parecido al de la historia anterior la diferencia fue el tener que añadir las caras a la linkedlist, esta linkedlist almacena las caras en un tipo de dato llamado Mat que se tiene gracias a la librería, el problema es que la función que detecta las caras y las almacena en un vector almacena datos de tipo Rect. Este tipo de dato no nos sirve para trabajar ya que si deseamos mostrar fotos por pantalla o trabajar con imágenes se trabaja generalemente con datos de tipo Mat. Pero lo bueno de este tipo de dato (Rect) es que nos entrega las coordenadas de la cara en el frame, esto si resulta muy útil ya que podemos recortar la imagen del frame y así obtener el rostro como tipo Mat.
-
-#### Almacenamiento en LinkedList
-
-Este es el código que se utilizó para poder conseguir las caras en tipo de dato Mat y asi poder almacenarlas en la LinkedList:
-
-```c++
-1. LinkedList listacaras = LinkedList();
-2.	for (Rect area : faces){
-3.	 Rect roi(Point(cvRound(area.x * scale), cvRound(area.y * scale)),
-4.		Point(cvRound((area.x + area.width - 1) * scale), cvRound((area.y + area.height - 1) * scale)))
-5.		listacaras.add(foto_familia(roi));
-6.	}
-7.	listacaras.show();
-```
-- Primera línea: Crea la LinkedList a utilizar para almacenar las caras.
-- Segunda línea: Inicializa un ciclo for que itera por un vector donde están almacenadas todas las caras como tipo de dato Rect.
-- Tercera y Cuarta línea: Se le pasan las coordenadas del rostro a la función roi() para luego poder recortar la cara del frame principal.
-- Quinta línea: Añade la cara a la linked list, se utiliza roi dentro de la función para mandar la cara recortada.
-- Séptima línea: Utiliza el método explicado anteriormente para poder desplegar el top5 de caras.
 
 ## 3. Resultados obtenidos
 Al inicializar el programa y elegir la "Historia 2" se despliega lo siguiente:![UCN](images/ResultadoH2.png)
