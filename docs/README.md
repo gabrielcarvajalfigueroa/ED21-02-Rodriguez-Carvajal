@@ -18,10 +18,10 @@
 
 ## 1. Introducción
 
-Para esta entrega se pedían las historias 1, 2, 3 y 5. Ademas de usar como estructura de datos los arboles, los arboles que se utilizaron quedaron a criterio nuestro y utilizamos los que mejor creimos que resolvian la historia correspondiente. En lo que respecta a las historias 1 y 2, estas ya se encontraban implementadas pero se les hicieron distintas mejoras y se adaptaron a lo que pedía esta entrega, por ejemplo: ahora la historia 1 funciona con un video en ves de una imagen y la historia 2 se implemento haciendo uso de un heaptree. Para la historia 3 se utilizó un arbol binario simple y la historia 5 no requeria uso de arboles pero si de la librería OpenCV.
+Para esta entrega se pedían las historias 1, 2, 3 y 5. Ademas de usar como estructura de datos los arboles, los arboles que se utilizaron quedaron a criterio nuestro y utilizamos los que mejor se adecuaban a cada historia. En lo que respecta a las historias 1 y 2, estas ya se encontraban implementadas pero se les hicieron distintas mejoras y se adaptaron a lo que pedía esta entrega, por ejemplo, ahora la historia 1 funciona con un video en vez de una imagen y la historia 2 se implementó haciendo uso de un heaptree. Para la historia 3 se utilizó un arbol binario simple y la historia 5 no requeria uso de arboles pero si de la librería OpenCV.
 
 ### 1.1 Descripción del problema
-El problema esta vez era poder encontrar una forma de diferenciar los rostros para así poder agregarlos a un arbol binario. Esto se logro gracias a la libreria OpenCV que cuenta con una funcion que calcula la diferencia euclidiana entres 2 imagenes y en base a la distancia que retorna y distintos numeros se puede llegar a ciertos numeros que funcionan como criterio para saber si la persona era la misma en las 2 fotos. Nos encontramos con algunos problemas como que cuando una persona se reia demasiado o cambiaba mucho su rostro el programa no lo reconocia como la misma persona, pero no se profundizo en la solucion de ese problema ya que nos enfocamos en el uso de arboles como estructura de datos para poder almacenar los rostros juntos a un ID.
+El problema esta vez era poder encontrar una forma de diferenciar los rostros para así poder agregarlos a un arbol binario. Esto se logro gracias a la libreria OpenCV que cuenta con una funcion que calcula la diferencia euclidiana entre 2 imagenes, usando dos valores de referencia nuestro programa puede concluir si dos imagenes son similares o diferentes. Nos encontramos con algunos problemas como que cuando una persona se reia demasiado o cambiaba mucho su rostro el programa no lo reconocia como la misma persona, pero no se profundizo en la solucion de ese problema ya que nos enfocamos en el uso de arboles como estructura de datos para poder almacenar los rostros juntos a un ID.
 ### 1.2 Objetivos 
 
 **Objetivo General**
@@ -59,7 +59,7 @@ En esta imagen se puede observar la GUI que se utilizó para esta entrega, donde
 ### Historia 1
 ![608c93566e15ef0dd332238ebe374632](https://user-images.githubusercontent.com/83176877/144720921-8cfdfc8d-24bd-43f7-9154-67385bf3cd33.gif)
 
-Como se observa en el gif ahora la historia funciona con un video, en este caso un video entregado por el profesor y que está en formato mp4. La logica de identificar las caras y encerrarlas en un cuadrado se mantiene lo unico que cambio fue que se necesito una forma de poder conseguir los frames del video para asi poder ir pasando frame por frame a un codigo que identeficara los rostros. El poder iterar frame por frame se logro con una clase de OpenCV llamada VideoCapture y la logica detras de la historia seria la siguiente:
+Como se observa en el gif ahora la historia funciona con un video, en este caso un video entregado por el profesor y que está en formato mp4. La logica de identificar las caras y encerrarlas en un cuadrado se mantiene lo unico que cambió fue que se necesito una forma de poder conseguir los frames del video para asi poder ir pasando frame por frame a un código que identificara los rostros. El poder iterar frame por frame se logró con una clase de OpenCV llamada VideoCapture y la lógica detrás de la historia sería la siguiente:
 
 ```c++
 1.  // Se crea un objeo de la clase VideoCapture que recibe el video en formato mp4
@@ -78,15 +78,15 @@ Como se observa en el gif ahora la historia funciona con un video, en este caso 
 ### Historia 3
 ![Historia3Intro](https://user-images.githubusercontent.com/83176877/144721365-8f2862fb-0d34-4124-b9b1-c9e345a66840.png)
 
-En este caso se varió un poco y se presento la historia en la consola en lugar de hacerlo con una GUI. Esta historia puntualmente pedia que se pudiera elegir una hora de inicio y fin para cortar el video, porque el programa estaba pensado para hacerse con un video de seguridad. Pero como el video que utilizamos duraba apenas 1 minuto con 16 segundos. se decidió dar la opción de dividir el video en cuatro partes y que el usuario pueda elegir con cual trabajar ingresando un número del 1 al 4 por teclado. Como resultado el video se analiza y finalmente entrega la cantidad de personas que aparecieron en la sección del video. Cada persona que va identificando se añade a un árbol binario dentro de un nodo junto con su respectivo ID.
+En este caso se varió un poco y se presento la historia en la consola en lugar de hacerlo con una GUI. Esta historia puntualmente pide que se pueda elegir una hora de inicio y fin para cortar el video. Pero como el video que utilizamos duraba apenas 1 minuto con 16 segundos. se decidió dar la opción de dividir el video en cuatro partes y que el usuario pueda elegir con cuál trabajar ingresando un número del 1 al 4 por teclado. Como resultado el video se analiza y finalmente entrega la cantidad de personas que aparecieron en la sección del video. Cada persona que va identificando se añade a un árbol binario dentro de un nodo junto con su respectivo ID.
 
 ![ce440c09fd5b08081cbe87a8675c5f0f](https://user-images.githubusercontent.com/83176877/144721969-0ef504c6-a99e-4cf5-8228-4a3fc7031752.gif)
 
-En el gif se puede ver como analiza frame por frame los rostros que recibe de la sección del video, donde calcula la distancia euclidiana entre frames para decidir si es el mismo rostro o si debe añadirlo al árbol binario.
+En el gif se puede ver cómo analiza frame a frame los rostros que recibe de la sección del video, donde calcula la distancia euclidiana entre frames para decidir si es el mismo rostro o si debe añadirlo al árbol binario.
 
-La clase del arbol binario tiene un atributo int llamado counter que lleva cuenta de cuantos id hay en árbol, entonces para facilitar el tema de saber cuantas personas aparecieron se añadió una función get a la clase del árbol para así poder obtener la variable counter, esto debido a que es una variable privada. Es importante tener en cuenta a la hora de probar el programa que en caso de ser un video muy largo se requiere un pc con buenos componentes ya que en este caso en particular el video de 1 minuto con 16 segundos tiene 2425 frames, y como se divide en 4 partes se trabaja con mínimo 600 frames.
+La clase del árbol binario tiene un atributo int llamado counter que lleva cuenta de cuantos id hay en el árbol, entonces para facilitar el tema de saber cuantas personas aparecieron se añadió una función get a la clase del árbol para así poder obtener la variable counter, esto debido a que es una variable privada. Es importante tener en cuenta a la hora de probar el programa que en caso de ser un video muy largo se requiere un pc con buenos componentes ya que en este caso en particular el video de 1 minuto con 16 segundos tiene 2425 frames, y como se divide en 4 partes se trabaja con mínimo 600 frames.
 
-La lógica para poder trabajar con el video en cuatro partes no es muy difícil solo hay que usar el concepto de que se pueden leer frames y no usarlos, así hasta llegar al frame deseado. Por lo que se usa un contador para saber en que frame va la iteración y con un par de if para saber cuando empezar a analizar las imagenes y otro para saber cuando terminar de analizar. Con eso en mente la lógica seria la siguiente.
+La lógica para poder trabajar con el video en cuatro partes no es muy difícil solo hay que usar el concepto de que se pueden leer frames y no usarlos, así hasta llegar al frame deseado. Por lo que se usa un contador para saber en qué frame va la iteración y con un par de if para saber cuándo empezar a analizar las imágenes y otro para saber cuándo terminar de analizar. Con eso en mente la lógica sería la siguiente.
 
 ```c++
 1.      int cuartoATrabjar;
@@ -145,9 +145,9 @@ Esta historia es más simple en comparación a las demás, cuando se activa guar
 
 
 ## 3. Resultados obtenidos
-En lo que respecta a las historias 1, 2 y 3, se puede establecer una comparación ya que todas trabajan con el procesamiento de imágenes. Se pudo observar lo mucho que cambia la velocidad del procesamiento de datos en las distintas historias. La historia 1 es capaz de desplegar el video a velocidad normal a pesar de tener que procesar los datos para agregarles los cuadrados a las caras. En cambio la historia 3 baja mucho su velocidad al momento de procesar imágenes debido al uso del árbol además de las comparaciones que debe hacer con el uso de la distancia euclidiana, claramente el pc y la cantidad de datos procesados también son un factor al momento de ver la velocidad. Pero aún así resulta efectivo trabajar con arboles aunque sean simples como el binario ya que ayuda con la búsqueda y con la inserción, todo esto si es que se tiene un buen criterio para diferenciar los nodos del árbol.
+Al inicializar el programa y elegir la "Historia 2" se despliega lo siguiente:![UCN](images/ResultadoH2.png)
 
-Por otro lado, la historia 5 logra procesar todas las imágenes del video en este caso 2425 como ya se mencionó anteriormente. Un defecto que tiene esta historia, dependiendo de para que se le quiera es que guarda el video sin audio, debido a que sólo trabaja con los frames entonces el audio se pierde. Pero tomando en cuenta que la intención del taller era solo poder ver personas y nada relacionado con el audio, no debería ser un problema del que preocuparse.
+Podemos comprobar entonces que nuestro programa funciona, reconoce rostros y los guarda.
 
 ## 4. Conclusiones
 La implementación de árboles en nuestro programa nos permitió aumentar las funcionalidades de nuestro programa, pudiendo trabajar con una gran cantidad de datos de una mejor manera; sin embargo, su implementación también supuso un desafío al momento de decidir qué tipo de árbol convenía en cada historia, de todos modos pudimos comprobar que los árboles mejoran la capacidad de búsqueda y orden de las listas enlazadas, adecuándose mejor a nuestro programa.
@@ -163,6 +163,5 @@ Una vez instalado crearemos un nuevo proyecto e iremos a la barra de herramienta
 
 Indicar los libros, páginas web, documentos, etc. Utilizados en el trabajo. Por ejemplo:
 
-1.  GeeksforGeeks. Recuperado de: https://www.geeksforgeeks.org/c-plus-plus/
-2.  OpenCv. Recuperado de: https://opencv.org/
-3.  Murtaza's Workshop. (13 de diciembre 2020). LEARN OPENCV C++ in 4 HOURS | Including 3x Projects | Computer Vision [Video]. YouTube. Obtenido de https://www.youtube.com/watch?v=2FYm3GOonhk&t=2008s
+1. MONTERO, J.,Metodos matemáticos aplicados a la ganadería.3aed. Sevilla: Ediciones de la pradera,2007.
+2. LVARADO,   J.   P.,¿Qué   debe   contener   un   artículo   científico?.http://www.ie.tec.ac.cr/palvarado/pmwiki/index.php/MSc/Art\%c3\%adculoCient\%c3\%adfico. Fe-cha de acceso:13/Nov/2018
