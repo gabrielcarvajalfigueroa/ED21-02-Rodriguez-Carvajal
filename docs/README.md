@@ -13,31 +13,31 @@
 ## Resumen 
 
 > La finalidad de esta entrega es poder resolver el problema presentado haciendo uso de otras estructuras de datos.
-> En este caso se utilizaron arboles, se usaron distintos arboles para resolver de mejor manera lo que requeria cada historia.
-> Se agregaron 2 historias más al programa ademas de que se le hicieron a arreglos a las historias anteriores
+> En este caso se utilizaron árboles, se usaron distintos árboles para resolver de mejor manera lo que requería cada historia.
+> Se agregaron 2 historias más al programa además de que se le hicieron a arreglos a las historias anteriores
 
 ## 1. Introducción
 
-Para esta entrega se pedían las historias 1, 2, 3 y 5. Ademas de usar como estructura de datos los arboles, los arboles que se utilizaron quedaron a criterio nuestro y utilizamos los que mejor se adecuaban a cada historia. En lo que respecta a las historias 1 y 2, estas ya se encontraban implementadas pero se les hicieron distintas mejoras y se adaptaron a lo que pedía esta entrega, por ejemplo, ahora la historia 1 funciona con un video en vez de una imagen y la historia 2 se implementó haciendo uso de un heaptree. Para la historia 3 se utilizó un arbol binario simple y la historia 5 no requeria uso de arboles pero si de la librería OpenCV.
+Para esta entrega se pedían las historias 1, 2, 3 y 5. Además de usar como estructura de datos los árboles, los árboles que se utilizaron quedaron a criterio nuestro y utilizamos los que mejor se adecuaban a cada historia. En lo que respecta a las historias 1 y 2, estas ya se encontraban implementadas pero se les hicieron distintas mejoras y se adaptaron a lo que pedía esta entrega, por ejemplo, ahora la historia 1 funciona con un video en lugar de una imagen y la historia 2 se implementó haciendo uso de un heaptree. Para la historia 3 se utilizó un arbol binario simple y la historia 5 no requería uso de árboles pero si de la librería OpenCV.
 
 ### 1.1 Descripción del problema
-El problema esta vez era poder encontrar una forma de diferenciar los rostros para así poder agregarlos a un arbol binario. Esto se logro gracias a la libreria OpenCV que cuenta con una funcion que calcula la diferencia euclidiana entre 2 imagenes, usando dos valores de referencia nuestro programa puede concluir si dos imagenes son similares o diferentes. Nos encontramos con algunos problemas como que cuando una persona se reia demasiado o cambiaba mucho su rostro el programa no lo reconocia como la misma persona, pero no se profundizo en la solucion de ese problema ya que nos enfocamos en el uso de arboles como estructura de datos para poder almacenar los rostros juntos a un ID.
+El problema esta vez era poder encontrar una forma de diferenciar los rostros para así poder agregarlos a un árbol binario. Esto se logró gracias a la librería OpenCV que cuenta con una función que calcula la diferencia euclidiana entre 2 imágenes, usando dos valores de referencia nuestro programa puede concluir si dos imágenes son similares o diferentes. Nos encontramos con algunos problemas como que cuando una persona se reía demasiado o cambiaba mucho su rostro el programa no lo reconocía como la misma persona, pero no se profundizó en la solución de ese problema ya que nos enfocamos en el uso de árboles como estructura de datos para poder almacenar los rostros juntos a un ID.
 ### 1.2 Objetivos 
 
 **Objetivo General**
 
-Utilizar el arbol que correspondiera para poder almacenar las imagenes y responder las historias correspondientes. Ademas de encontrar un manera de guardar el video como una copia de seguridad.
+Utilizar el árbol que correspondiera para poder almacenar las imágenes y responder las historias correspondientes. Además de encontrar un manera de guardar el video como una copia de seguridad.
 
 **Objetivos específicos**
 
 1. Hacer que la historia 1 funcionara con un video, en este caso uno entregado por el profesor.
 2. Implementar la historia 2 haciendo uso de un heaptree ya que facilita el poder encontrar el top 5 de rostros que mas aparecieron.
-3. Encontrar una forma de dividir el video en secciones para asi poder contar cuantas personas aparecieron por seccion con el fin de llevar un conteo.
+3. Encontrar una forma de dividir el video en secciones para asi poder contar cuantas personas aparecieron por sección con el fin de llevar un conteo.
 4. Investigar y luego implementar una forma para poder almacenar una copia de seguridad del video en la carpeta del proyecto, para la historia 5.
 
 ### 1.3 Solución propuesta
 
-Usar una arquitectura donde se pudiera trabajar cada historia por separado con el fin de poder repartirnos el trabajo y de que ademas las distintas historias no se afectaran entre ellas ya que seria un problema que dependieran una de la otra por que se perderia libertad a la hora de realizar la implementacion. Y también usar un arbol creado por nuestra parte y otro arbol implementado por el profesor que dicta la asignatura Juan Bekios.
+Usar una arquitectura donde se pudiera trabajar cada historia por separado con el fin de poder repartirnos el trabajo y de que además las distintas historias no se afectaran entre ellas ya que sería un problema que dependieran una de la otra por que se perdería libertad a la hora de realizar la implementación. Y también usar un árbol creado por nuestra parte y otro arbol implementado por el profesor que dicta la asignatura Juan Bekios.
 
 ## 2. Materiales y métodos
 
@@ -48,18 +48,18 @@ Lenguaje de programación C++, librería OpenCV.
 
 ![DiagramaClasesRealease0 3](https://user-images.githubusercontent.com/83176877/144719851-fe7e5bc6-9ee1-438b-8861-f10c8627575b.png)
 
-La arquitectura que se utilizo para la entrega anterior se mantuvo ya que la arquitectura fue pensada para que se pudieran seguir añadiendo historias independientemente sin tener que afectar la funcionalidad del programa. Esto es muy util ya que en la clase MenuRial se levanta una interfaz grafica que puede recibir input por teclado usando la funcion de OpenCv waitKey(0); y con el parametro 0 ya que debe quedar esperando el input por un tiempo indefinido. Luego recibe un input de int que se almacena en una variable que se compara en un if anidado con otros enteros que son las representaciones de las letras (que aparecen la imagen de abajo) pero en codigo ASCII, por eso se trabaja con un entero. Luego cuando entra en el if que corresponde activa la historia que corresponde. Y finalmente toda esta logica ocurre dentro de un do-while que se cierra cuando el usuario presiona 0. Es importante que se use el do-while porque la interfaz debe desplegarse al menos una vez.
+La arquitectura que se utilizó para la entrega anterior se mantuvo ya que la arquitectura fue pensada para que se pudieran seguir añadiendo historias independientemente sin tener que afectar la funcionalidad del programa. Esto es muy útil ya que en la clase MenuRial se levanta una interfaz gráfica que puede recibir input por teclado usando la funcion de OpenCV waitKey(0), con el parámetro en 0 ya que debe quedar esperando el input por un tiempo indefinido. Luego recibe un input de int que se almacena en una variable que se compara en un if anidado con otros enteros que son las representaciones de las letras (que aparecen la imagen de abajo) pero en código ASCII, por eso se trabaja con un entero. Luego cuando entra en el if que corresponde activa la historia que corresponde. Y finalmente toda esta lógica ocurre dentro de un do-while que se cierra cuando el usuario presiona 0. Es importante que se use el do-while porque la interfaz debe desplegarse al menos una vez.
 
 ![MenuUsuarioRelease0 3](https://user-images.githubusercontent.com/83176877/144721142-c7fb52b7-712c-458a-88ce-fab9e0c805de.png)
 
-En esta imagen se puede observar la GUI que se utilizó para esta entrega, donde se añadieron las historias 3 y 5. Esta GUI como se hablaba arriba funciona con input por teclado solo con el fin de hacer mas facil el acceso a las historias a la hora del testeo y tambien porque es mejor que hacerlo por consola. Al presionar la tecla de la historia el programa recibe el valor por teclado en codigo ASCII y lo compara en un if, todo este codigo puede encontrarse en el archivo MenuRial.cpp.
+En esta imagen se puede observar la GUI que se utilizó para esta entrega, donde se añadieron las historias 3 y 5. Esta GUI como se hablaba arriba funciona con input por teclado solo con el fin de hacer mas fácil el acceso a las historias a la hora del testeo y también porque es mejor que hacerlo por consola. Al presionar la tecla de la historia el programa recibe el valor por teclado en codigo ASCII y lo compara en un if, todo este código puede encontrarse en el archivo MenuRial.cpp.
 
 ### 2.2 Implementación
 
 ### Historia 1
 ![608c93566e15ef0dd332238ebe374632](https://user-images.githubusercontent.com/83176877/144720921-8cfdfc8d-24bd-43f7-9154-67385bf3cd33.gif)
 
-Como se observa en el gif ahora la historia funciona con un video, en este caso un video entregado por el profesor y que está en formato mp4. La logica de identificar las caras y encerrarlas en un cuadrado se mantiene lo unico que cambió fue que se necesito una forma de poder conseguir los frames del video para asi poder ir pasando frame por frame a un código que identificara los rostros. El poder iterar frame por frame se logró con una clase de OpenCV llamada VideoCapture y la lógica detrás de la historia sería la siguiente:
+Como se observa en el gif ahora la historia funciona con un video, en este caso un video entregado por el profesor y que está en formato mp4. La lógica de identificar las caras y encerrarlas en un cuadrado se mantiene lo único que cambió fue que se necesito una forma de poder conseguir los frames del video para asi poder ir pasando frame por frame a un código que identificara los rostros. El poder iterar frame por frame se logró con una clase de OpenCV llamada VideoCapture y la lógica detrás de la historia sería la siguiente:
 
 ```c++
 1.  // Se crea un objeo de la clase VideoCapture que recibe el video en formato mp4
@@ -80,7 +80,7 @@ No se pudo realizar completamente por problemas con el heap tree.
 ### Historia 3
 ![Historia3Intro](https://user-images.githubusercontent.com/83176877/144721365-8f2862fb-0d34-4124-b9b1-c9e345a66840.png)
 
-En este caso se varió un poco y se presento la historia en la consola en lugar de hacerlo con una GUI. Esta historia puntualmente pide que se pueda elegir una hora de inicio y fin para cortar el video. Pero como el video que utilizamos duraba apenas 1 minuto con 16 segundos. se decidió dar la opción de dividir el video en cuatro partes y que el usuario pueda elegir con cuál trabajar ingresando un número del 1 al 4 por teclado. Como resultado el video se analiza y finalmente entrega la cantidad de personas que aparecieron en la sección del video. Cada persona que va identificando se añade a un árbol binario dentro de un nodo junto con su respectivo ID.
+En este caso se varió un poco y se presento la historia en la consola en lugar de hacerlo con una GUI. Esta historia puntualmente pide que se pueda elegir una hora de inicio y fin para cortar el video. Pero como el video que utilizamos duraba apenas 1 minuto con 16 segundos, se decidió dar la opción de dividir el video en cuatro partes y que el usuario pueda elegir con cuál trabajar ingresando un número del 1 al 4 por teclado. Como resultado el video se analiza y finalmente entrega la cantidad de personas que aparecieron en la sección del video. Cada persona que va identificando se añade a un árbol binario dentro de un nodo junto con su respectivo ID.
 
 ![ce440c09fd5b08081cbe87a8675c5f0f](https://user-images.githubusercontent.com/83176877/144721969-0ef504c6-a99e-4cf5-8228-4a3fc7031752.gif)
 
