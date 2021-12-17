@@ -12,32 +12,27 @@
 
 ## Resumen 
 
-> La finalidad de esta entrega es poder resolver el problema presentado haciendo uso de otras estructuras de datos.
-> En este caso se utilizaron árboles, se usaron distintos árboles para resolver de mejor manera lo que requería cada historia.
-> Se agregaron 2 historias más al programa además de que se le hicieron a arreglos a las historias anteriores
+> [INSERTE RESUMEN]
 
 ## 1. Introducción
 
-Para esta entrega se pedían las historias 1, 2, 3 y 5. Además de usar como estructura de datos los árboles, los árboles que se utilizaron quedaron a criterio nuestro y utilizamos los que mejor se adecuaban a cada historia. En lo que respecta a las historias 1 y 2, estas ya se encontraban implementadas pero se les hicieron distintas mejoras y se adaptaron a lo que pedía esta entrega, por ejemplo, ahora la historia 1 funciona con un video en lugar de una imagen y la historia 2 se implementó haciendo uso de un heaptree. Para la historia 3 se utilizó un arbol binario simple y la historia 5 no requería uso de árboles pero si de la librería OpenCV.
+[INSERTE INTRO]
 
 ### 1.1 Descripción del problema
-El problema esta vez era poder encontrar una forma de diferenciar los rostros para así poder agregarlos a un árbol binario. Esto se logró gracias a la librería OpenCV que cuenta con una función que calcula la diferencia euclidiana entre 2 imágenes, usando dos valores de referencia nuestro programa puede concluir si dos imágenes son similares o diferentes. Nos encontramos con algunos problemas como que cuando una persona se reía demasiado o cambiaba mucho su rostro el programa no lo reconocía como la misma persona, pero no se profundizó en la solución de ese problema ya que nos enfocamos en el uso de árboles como estructura de datos para poder almacenar los rostros juntos a un ID.
+[INSERTE DESCRIPCION]
 ### 1.2 Objetivos 
 
 **Objetivo General**
 
-Utilizar el árbol que correspondiera para poder almacenar las imágenes y responder las historias correspondientes. Además de encontrar un manera de guardar el video como una copia de seguridad.
+[OBJ]
 
 **Objetivos específicos**
 
-1. Hacer que la historia 1 funcionara con un video, en este caso uno entregado por el profesor.
-2. Implementar la historia 2 haciendo uso de un heaptree ya que facilita el poder encontrar el top 5 de rostros que mas aparecieron.
-3. Encontrar una forma de dividir el video en secciones para asi poder contar cuantas personas aparecieron por sección con el fin de llevar un conteo.
-4. Investigar y luego implementar una forma para poder almacenar una copia de seguridad del video en la carpeta del proyecto, para la historia 5.
+1.[OBJS]
 
 ### 1.3 Solución propuesta
 
-Usar una arquitectura donde se pudiera trabajar cada historia por separado con el fin de poder repartirnos el trabajo y de que además las distintas historias no se afectaran entre ellas ya que sería un problema que dependieran una de la otra por que se perdería libertad a la hora de realizar la implementación. Y también usar un árbol creado por nuestra parte y otro arbol implementado por el profesor que dicta la asignatura Juan Bekios.
+[SOL]
 
 ## 2. Materiales y métodos
 
@@ -50,9 +45,10 @@ Lenguaje de programación C++, librería OpenCV.
 
 La arquitectura que se utilizó para la entrega anterior se mantuvo ya que la arquitectura fue pensada para que se pudieran seguir añadiendo historias independientemente sin tener que afectar la funcionalidad del programa. Esto es muy útil ya que en la clase MenuRial se levanta una interfaz gráfica que puede recibir input por teclado usando la funcion de OpenCV waitKey(0), con el parámetro en 0 ya que debe quedar esperando el input por un tiempo indefinido. Luego recibe un input de int que se almacena en una variable que se compara en un if anidado con otros enteros que son las representaciones de las letras (que aparecen la imagen de abajo) pero en código ASCII, por eso se trabaja con un entero. Luego cuando entra en el if que corresponde activa la historia que corresponde. Y finalmente toda esta lógica ocurre dentro de un do-while que se cierra cuando el usuario presiona 0. Es importante que se use el do-while porque la interfaz debe desplegarse al menos una vez.
 
-![MenuUsuarioRelease0 3](https://user-images.githubusercontent.com/83176877/144721142-c7fb52b7-712c-458a-88ce-fab9e0c805de.png)
+![MenuRelease1 0](https://user-images.githubusercontent.com/83176877/146603864-012f39a9-7b70-4b5e-93d2-95462d7be940.png)
 
-En esta imagen se puede observar la GUI que se utilizó para esta entrega, donde se añadieron las historias 3 y 5. Esta GUI como se hablaba arriba funciona con input por teclado solo con el fin de hacer mas fácil el acceso a las historias a la hora del testeo y también porque es mejor que hacerlo por consola. Al presionar la tecla de la historia el programa recibe el valor por teclado en codigo ASCII y lo compara en un if, todo este código puede encontrarse en el archivo MenuRial.cpp.
+
+En esta imagen se puede observar la GUI que se utilizó para esta entrega, donde se añadieron las historias 4 y 6. Esta GUI como se hablaba arriba funciona con input por teclado solo con el fin de hacer mas fácil el acceso a las historias a la hora del testeo y también porque es mejor que hacerlo por consola. Al presionar la tecla de la historia el programa recibe el valor por teclado en codigo ASCII y lo compara en un if, todo este código puede encontrarse en el archivo MenuRial.cpp.
 
 ### 2.2 Implementación
 
@@ -75,48 +71,12 @@ Como se observa en el gif ahora la historia funciona con un video, en este caso 
 
 ### Historia 2
 
-No se pudo realizar completamente por problemas con el heap tree.
+
 
 ### Historia 3
-![Historia3Intro](https://user-images.githubusercontent.com/83176877/144721365-8f2862fb-0d34-4124-b9b1-c9e345a66840.png)
 
-En este caso se varió un poco y se presento la historia en la consola en lugar de hacerlo con una GUI. Esta historia puntualmente pide que se pueda elegir una hora de inicio y fin para cortar el video. Pero como el video que utilizamos duraba apenas 1 minuto con 16 segundos, se decidió dar la opción de dividir el video en cuatro partes y que el usuario pueda elegir con cuál trabajar ingresando un número del 1 al 4 por teclado. Como resultado el video se analiza y finalmente entrega la cantidad de personas que aparecieron en la sección del video. Cada persona que va identificando se añade a un árbol binario dentro de un nodo junto con su respectivo ID.
 
-![ce440c09fd5b08081cbe87a8675c5f0f](https://user-images.githubusercontent.com/83176877/144721969-0ef504c6-a99e-4cf5-8228-4a3fc7031752.gif)
-
-En el gif se puede ver cómo analiza frame a frame los rostros que recibe de la sección del video, donde calcula la distancia euclidiana entre frames para decidir si es el mismo rostro o si debe añadirlo al árbol binario.
-
-La clase del árbol binario tiene un atributo int llamado counter que lleva cuenta de cuantos id hay en el árbol, entonces para facilitar el tema de saber cuantas personas aparecieron se añadió una función get a la clase del árbol para así poder obtener la variable counter, esto debido a que es una variable privada. Es importante tener en cuenta a la hora de probar el programa que en caso de ser un video muy largo se requiere un pc con buenos componentes ya que en este caso en particular el video de 1 minuto con 16 segundos tiene 2425 frames, y como se divide en 4 partes se trabaja con mínimo 600 frames.
-
-La lógica para poder trabajar con el video en cuatro partes no es muy difícil solo hay que usar el concepto de que se pueden leer frames y no usarlos, así hasta llegar al frame deseado. Por lo que se usa un contador para saber en qué frame va la iteración y con un par de if para saber cuándo empezar a analizar las imágenes y otro para saber cuándo terminar de analizar. Con eso en mente la lógica sería la siguiente.
-
-```c++
-1.      int cuartoATrabjar;
-2.	cin >> cuartoATrabjar;
-3.	int frames_totales = calcularFramesTotales("Video-Practica.mp4"); // la funcion retorna el total de frames -- implementada por nosotros
-4.
-5.	cout << "El cuarto elegido fue: " << cuartoATrabjar << endl;
-6.	cout << "El total de frames: " << frames_totales << endl;
-7.	
-8.	Mat image; // imagen para trabjar
-9.	while (1) { 
-10.		video.read(image);
-11.		
-12.		// esta operacion deja trabajar en el ciclo que corresponda
-13.		if ((( (cuartoATrabjar - 1) * frames_totales) / 4) <= cont) {
-14.			//La magia
-15.			// se cuenta la cantidad de personas que aparecieron en esa parte del video
-16.			// Leemos todas las caras de los archivos de imágenes y las insertamos en el árbol
-17.		}
-18.		if (cont == ((cuartoATrabjar * frames_totales) / 4)) {
-19.			cout << "salio del ciclo" << endl;
-20.			break;
-21.		} 
-22.		cont++;
-23.	}
-24.  // Entrega el total de personas que aparecieron en la seccion del video para asi finalizar con la historia
-25.	cout << "EL TOTAL DE PERSONAS IDENTIFICADAS FUE DE: " << abb.getCounter() << endl;
-```
+### Historia 4
 
 
 ### Historia 5
@@ -145,14 +105,15 @@ Esta historia es más simple en comparación a las demás, cuando se activa guar
 18. }
 ```
 
+### Historia 6
+
 
 ## 3. Resultados obtenidos
-En lo que respecta a las historias 1, 2 y 3, se puede establecer una comparación ya que todas trabajan con el procesamiento de imágenes. Se pudo observar lo mucho que cambia la velocidad del procesamiento de datos en las distintas historias. La historia 1 es capaz de desplegar el video a velocidad normal a pesar de tener que procesar los datos para agregarles los cuadrados a las caras. En cambio la historia 3 baja mucho su velocidad al momento de procesar imágenes debido al uso del árbol además de las comparaciones que debe hacer con el uso de la distancia euclidiana, claramente el pc y la cantidad de datos procesados también son un factor al momento de ver la velocidad. Pero aún así resulta efectivo trabajar con arboles aunque sean simples como el binario ya que ayuda con la búsqueda y con la inserción, todo esto si es que se tiene un buen criterio para diferenciar los nodos del árbol.
-
-Por otro lado, la historia 5 logra procesar todas las imágenes del video en este caso 2425 como ya se mencionó anteriormente. Un defecto que tiene esta historia, dependiendo de para que se le quiera es que guarda el video sin audio, debido a que sólo trabaja con los frames entonces el audio se pierde. Pero tomando en cuenta que la intención del taller era solo poder ver personas y nada relacionado con el audio, no debería ser un problema del que preocuparse.
+[Resultados]
 
 ## 4. Conclusiones
-La implementación de árboles en nuestro programa nos permitió aumentar las funcionalidades de nuestro programa, pudiendo trabajar con una gran cantidad de datos de una mejor manera; sin embargo, su implementación también supuso un desafío al momento de decidir qué tipo de árbol convenía en cada historia, de todos modos pudimos comprobar que los árboles mejoran la capacidad de búsqueda y orden de las listas enlazadas, adecuándose mejor a nuestro programa.
+[concl]
+
 # Anexos
 
 ## Anexo A: Instalación librerías OpenCV
