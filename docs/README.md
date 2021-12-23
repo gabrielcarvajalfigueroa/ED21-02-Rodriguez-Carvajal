@@ -12,27 +12,32 @@
 
 ## Resumen 
 
-> [INSERTE RESUMEN]
+> Esta entrega aborda de la historia 1 hasta la historia 6, es decir, todas las historias requeridas para el taller. En esta ocasión se pidió realizar la entrega haciendo uso de  un árbol del tipo AVL. Entonces se creó una clase capaz de adaptarse a la arquitectura propuesta, para así trabajar con sólo una clase y utilizar todas sus funciones. Todo esto haciendo uso de la librería OpenCV más lo estudiado en las clases de Estructuras de Datos.
 
 ## 1. Introducción
 
-[INSERTE INTRO]
+Lo primero que nos tuvimos que plantear fue como implementar un árbol del tipo AVL para que se adaptará a nuestras necesidades ya que este taller tiene una finalidad muy particular, por lo que necesitabamos usar un tipo de árbol con las funciones adecuadas y sólo las necesarias para poder trabajar con un código más ordenado y más personalizado. Luego de tenerlo implentado había que agregarlo a la arquitectura de tal forma que no arruinara las otras funcionalidades del programa, la forma de agregarlo no es díficil solo se instancia en la historia en que se necesita. Una vez con el árbol funcional solo quedaba encontrar el algoritmo correspondiente para cada historia, para así darles solución.
 
 ### 1.1 Descripción del problema
-[INSERTE DESCRIPCION]
+
+El problema a grandes rasgos se puede dividir en 2 partes, la parte 1 sería todo lo relacionado al AVL, sus funciones, atributos y versatilidad con respecto a lo necesitado. Por lo que para resolver de forma completa la anterior parte llamada parte 1 era necesario entender bien la parte 2. La parte 2 sería el implementar las historias 2, 3, 4 y 6. Al tener claro los requisitos de estas historias se podía implementar un AVL más completo que fuera capaz de abordar todo el problema con sus funciones.
+
 ### 1.2 Objetivos 
 
 **Objetivo General**
 
-[OBJ]
+Entender requisitos de las historias y encontrar algortimos óptimos para su resolución. Realizar todo el manejo de datos haciendo uso de un AVL.
 
 **Objetivos específicos**
 
-1.[OBJS]
+1. Entender los requisitos de las historias para implementar AVL.
+2. Implementar AVL.
+3. Implementar  Historias 2, 3, 4 y 6.
+4. Que las nuevas funcionalidades no alteren en gran parte la arquitectura propuesta.
 
 ### 1.3 Solución propuesta
 
-[SOL]
+Crear una clase llamada AVLTree la cual utiliza otra clase para sus nodos llamada AVL, esta clase posee funciones para insertar al nodo raíz, además de poder hacer las 4 rotaciones características de un AVL con el fin de poder mantenerlo balanceado, también se tiene funciones para poder recorrerlo en preorden. Luego de tener esta clase añadirla a cada Historia (Recordar que cada historia tiene su propia clase donde se le da solución) y hacerla funcionar dentro del algoritmo que corresponda.
 
 ## 2. Materiales y métodos
 
@@ -40,8 +45,8 @@ Lenguaje de programación C++, librería OpenCV.
 
 ### 2.1 Diseño 
 
+![DiagramaRelease1 0](https://user-images.githubusercontent.com/83176877/147185593-96015fcb-d046-463b-9c2e-8357d4949761.png)
 
-![DiagramaClasesRealease0 3](https://user-images.githubusercontent.com/83176877/144719851-fe7e5bc6-9ee1-438b-8861-f10c8627575b.png)
 
 La arquitectura que se utilizó para la entrega anterior se mantuvo ya que la arquitectura fue pensada para que se pudieran seguir añadiendo historias independientemente sin tener que afectar la funcionalidad del programa. Esto es muy útil ya que en la clase MenuRial se levanta una interfaz gráfica que puede recibir input por teclado usando la funcion de OpenCV waitKey(0), con el parámetro en 0 ya que debe quedar esperando el input por un tiempo indefinido. Luego recibe un input de int que se almacena en una variable que se compara en un if anidado con otros enteros que son las representaciones de las letras (que aparecen la imagen de abajo) pero en código ASCII, por eso se trabaja con un entero. Luego cuando entra en el if que corresponde activa la historia que corresponde. Y finalmente toda esta lógica ocurre dentro de un do-while que se cierra cuando el usuario presiona 0. Es importante que se use el do-while porque la interfaz debe desplegarse al menos una vez.
 
