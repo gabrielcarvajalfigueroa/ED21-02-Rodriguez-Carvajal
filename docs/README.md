@@ -128,6 +128,28 @@ Lógica general
 
 ### Historia 4
 
+Para realizar esta historia se utilizó el factor de que el árbol estaba ordenado por la frecuencia con que aparecía un rostro, debido a que trabajamos con un AVL en esta situación y la historia nos pide mostrar el rostro que más apareció. Utilizamos el hecho de que el rostro con mayor frecuencia debería ser el que se encontraba al final hacia la derecha. Todo esto se puede que resolver gracias a que los nodos se hicieron con atributos personalizados para responder la historia como se puede ver a continuación:
+
+![Historia4release1 0](https://user-images.githubusercontent.com/83176877/147300381-65d37dff-d860-4c29-a1b8-dd984f5fb408.png)
+
+Por otro lado, la función que permite obtener el rostro que más apareció haciendo uso de lo mencionado anteriormente sería la siguiente:
+
+```c++
+1.  void MostrarTop1(AVLtree avlt) {
+2.    Mat Top1; // guarda imagen top 1
+3.
+4.    AVL* aux = avlt.root; // iterara por el árbol
+5.
+6.    while (1) { // Se usa para llegar hasta el nodo final
+7.      if (aux->r == NULL) break;
+8.      aux = aux->r;
+9.    }
+10.
+11.   imshow(" TOP - 1 ", Top1); // despliega el rostro
+12.    waitKey(0);               // hasta que se presione cualquier tecla
+13.  }
+```
+
 
 ### Historia 5
 ![Historia5](https://user-images.githubusercontent.com/83176877/144721059-09aee193-34b3-417f-a2a4-2068019cfae3.png)
