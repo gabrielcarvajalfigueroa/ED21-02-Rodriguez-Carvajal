@@ -81,6 +81,51 @@ Como se observa en el gif ahora la historia funciona con un video, en este caso 
 ### Historia 3
 
 
+Esta historia mantuvo la lógica de la anterior debido a que esta historia sólo pide saber cuantas personas aparecieron en el video, y como el arbol no repite personas, es decir, tiene ids únicas, solamente se necesita llevar cuenta de cuantos nodos se van creando y así se puede tener el total de personas que aparecieron. Este valor se añade cuando se hace la inserción en el árbol.
+
+A continuación se muestra lo que ocurre dentro de la función insert del árbol AVL y la lógica a grandes rasgos de la historia 3.
+
+**Dentro del insert**
+
+```c++
+1. AVL* AVLtree::insert(AVL* r, Mat im) {
+2.    if (r == NULL) {
+3.        r = new AVL;
+4.        r->d = 1;
+5.        r->im = im;
+6.        r->l = NULL;
+7.        r->r = NULL;
+8.        cantNodos++; // Al crear un nuevo nodo se le suma a la variable que se encuentra en la clase AVLtree
+9.        return r;
+10.    }
+11.    
+12.   ... 
+13. }
+```
+
+Lógica general
+
+```c++
+1.	int cont = 0; // contador para saber en que frame va la secuencia
+2.	cout << muchoTexto() << endl; //Esta primera parte es para poder trabajar el video por secciones
+3.	cout << "Ingrese el cuarto en el que desea trabajar:" << endl;
+4.	int cuartoATrabjar;
+5.	cin >> cuartoATrabjar;
+6.	int frames_totales = calcularFramesTotales("Video-Practica.mp4");
+7.	AVLtree avlt; //Se declara el arbol que recibirá las imagenes
+8.	while (1) { 
+9.		video.read(image);
+10.		// esta operacion deja trabajar en el ciclo que corresponda
+11.		if ((( (cuartoATrabjar - 1) * frames_totales) / 4) <= cont) {
+12.        ...			
+13.				avlt.insert(cf);
+14.        ...}
+15.      }  
+16.	// Entrega el total de personas que aparecieron en la seccion del video para asi finalizar con la historia
+17.	cout << "EL TOTAL DE PERSONAS IDENTIFICADAS FUE DE: " << avlt.cantNodos << endl;
+18.	video.release();}
+```
+
 ### Historia 4
 
 
