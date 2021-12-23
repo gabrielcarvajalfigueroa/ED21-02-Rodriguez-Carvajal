@@ -27,6 +27,8 @@ void MostrarTop1(AVLtree avlt) {
 		if (aux->r == NULL) break;
 		aux = aux->r;
 	}
+	
+	Top1 = aux->im;
 
 	imshow(" TOP - 1 ", Top1);
 	waitKey(0);
