@@ -34,11 +34,7 @@ void MostrarTop1(AVLtree avlt) {
 
 
 Historia4::Historia4() {
-	/*
-	*  1) Establecer inicio y final
-	*  2) Contar las personas que aparecieron
-	*  3) Mostrar las personas que aparecieron
-	*/
+
 
 	// Crea el objeto para capturar video se le entrega el video utilizado
 	cv::VideoCapture video("Video-Practica.mp4");
