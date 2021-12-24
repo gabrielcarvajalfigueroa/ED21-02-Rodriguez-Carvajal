@@ -84,60 +84,26 @@ AVL* AVLtree::insert(AVL* r, Mat im) {
         cantNodos++;
         return r;
     }
-    AVL* coincidente = searchPreOrder(r, im);
-    if (coincidente != NULL) {
-        cout << "EQUISDEEEEE" << endl;
-        coincidente->d++;
-        cout << coincidente->d << endl;
-    }
-    else if (1 < r->d) {
-        cout << "CHAOOOOO" << endl;
+    
+    if (1300 < euclideanDistance(r->im, im) && 1700 > euclideanDistance(r->im, im)) {
         r->l = insert(r->l, im);
         r = balance(r);
     }
-    else if (1 >= r->d) {
-        cout << "HOLAAAAA" << endl;
+    else if (1700 <= euclideanDistance(r->im, im)) {
         r->r = insert(r->r, im);
         r = balance(r);
-    } return r;
-}
-
-AVL* AVLtree::searchPreOrder(AVL* t, Mat img) {
-    if (t == NULL)
-        return NULL;
-    if (euclideanDistance(t->im, img) <= 1300) return t;
-    searchPreOrder(t->l, img);
-    searchPreOrder(t->r, img);
+    }
+    else {
+        r->d++;
+    }
+    return r;
 }
 
 void AVLtree::inorder(AVL* t) {//   b  
     if (t == NULL)              // a   c
         return;
     inorder(t->l);
-    cout << t->d << " ";
+    vect.push_back(t);
     inorder(t->r);
 }
 
-void AVLtree::show(AVL* p, int l) {
-    int i;
-    if (p != NULL) {
-        show(p->r, l + 1);
-        cout << " ";
-        if (p == root)
-            cout << "Root -> ";
-        for (i = 0; i < l && p != root; i++)
-            cout << " ";
-        cout << p->d;
-        show(p->l, l + 1);
-    }
-}
-
-vector<Mat> AVLtree::getTop5(AVL* t) {
-    vector<Mat> vect;
-    if (t == NULL)              // a   c
-        return vect;
-    getTop5(t->l);
-    vect.push_back(t->im);
-    getTop5(t->r);
-    return vect;
-}
