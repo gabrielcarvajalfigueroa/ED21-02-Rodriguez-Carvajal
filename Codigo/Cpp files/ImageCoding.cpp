@@ -1,7 +1,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include "ImageCoding.h"
+#include "include/ImageCoding.h"
 
 using namespace std;
 ImageCoding::ImageCoding() {
@@ -17,7 +17,7 @@ std::vector<Mat> ImageCoding::codeGray(std::vector<Rect> detections, bool equali
     for (const auto& det : detections) {
         // Recorto la imagen detectada
         cropColor = frame_(det);
-        //Usamos solo im·genes en grises
+        //Usamos solo im√°genes en grises
         cvtColor(cropColor, imageGray, COLOR_BGR2GRAY);
         // Si se desea ecualizar la imagen (aumentar contraste)
         if (equalize) {
