@@ -13,8 +13,8 @@
 [Ver Bitácora](docs/BITACORA.md)
 
 ### Resumen
-
-<Agregar el resumen del reporte técnico>
+Video explicativo:
+https://youtu.be/jAzec8WGQgU
 
 <Colocar alguna imágen en la portada>
 
