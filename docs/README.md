@@ -85,7 +85,7 @@ Esta historia mantuvo la lógica de la anterior debido a que esta historia sólo
 
 A continuación se muestra lo que ocurre dentro de la función insert del árbol AVL y la lógica a grandes rasgos de la historia 3.
 
-**Dentro del insert**
+Dentro del insert
 
 ```c++
 1. AVL* AVLtree::insert(AVL* r, Mat im) {
@@ -179,12 +179,43 @@ Esta historia es más simple en comparación a las demás, cuando se activa guar
 
 ### Historia 6
 
+Para este problema se pedía tener un listado de las personas que aparecieron en el video junto con el tiempo en el que aparecieron. Debido a que no encontramos una buena forma de trabajar con el tiempo en OpenCV decidimos trabajar por frames. Un video tiene una cantidad finita de frames por lo tanto, una persona aparece en una cantidad finita de frames, con eso en cuenta decidimos darle un orden a los frames desde el 1 hasta el que llegara el video. Entonces a cada nodo le añadimos un vector de enteros el cual contiene el número del frame en el que apareció la persona. Entonces como se mostraba en la historia 4, cuando se hace una iteración y se le sumaba uno a la frecuencia a su vez se añade el número del frame al vector del nodo.
+
+Aquí hubo un problema el cual era: como puede saber la función insert en que frame voy sin tener que pasarselo como atributo. Para resolver esto le añadimos un atributo al AVLtree el cual posee el frame actual a la hora de iterar el video, este atributo se va cambiando con cada iteración usando punteros para acceder a donde se encuentra alojada esa variable en la memoria. Para mejorar el entendimiento aquí se puede ver el algoritmo de como trabaja el tema del frame actual:
+
+```c++
+1.	Mat image; // imagen para trabjar
+2.	AVLtree avlt; //Se declara el arbol que recibira las imagenes
+3.
+4.	int frame = 1;
+5.
+6.	int* frame_actual_avl = &avlt.frame_actual; //el puntero apunta a la direccion de la variable
+7.
+8.	while (1) {
+9.		video.read(image);
+10.     ...
+11.			*frame_actual_avl = frame; //se cambia el valor de la variable antes de trabajar en el insert
+12.			avlt.insert(cf); // se añade el número del frame al vector previamente nombrado
+13.     ... 
+14.		frame++;
+15.	}
+```
+
 
 ## 3. Resultados obtenidos
-[Resultados]
+
+Logramos abordar el problema desde distintas estructuras de datos, en este caso que trabajamos con AVL fue muy útil para funciones como la de encontrar el top1 de persona que más apareció en el video ya que al ser un AVL y seguir cierto orden podiamos encontrar la ruta más óptima sin siquiera tener que realizar cálculos, lo cual lo vuelve increiblemente veloz. El problema que nos volvimos a encontrar a la hora de testear el codigo fue que en este taller hubo una función fundamental que fue la de la distancia euclidiana, lo malo de esta función es que consume muchos recursos y nos limitaba a la hora de trabajar con más imágenes porque nuestros computadores se ponian demasiado lentos. Esto afecta bastante ya que nos deja con la duda de como funciona el programa cuando debe manejar grandes cantidades de datos. Si bien algunas historias se trabajaron con el video, el video no superaba las 700 imágenes.
+
+
 
 ## 4. Conclusiones
-[concl]
+
+Luego de haber usado distintas estructuras de datos para abordar este problema, como grupo encontramos que el trabajo con árboles conlleva grandes ventajas a la hora de búsqueda en ciertos casos. Pero el uso de árboles ya sea el ABB o el AVl encontramos que sólo vale la pena si es que se tiene un buen criterio para diferenciar los datos ya que en esto recaen funciones importantísimas como el insert, buscar, eliminar. Se requiere un buen criterio para ordenar los datos ya que si no se tiene pierde su gracia el trabajar con árboles y sale más práctico trabajar con linkedlist.
+
+Además la diferencia entre implementar un árbol y una linked list es bastante grande, el implementar árboles en este caso fue algo muy personalizado como fue el tema de la frecuencia, el tener imágenes con los rostros, un vector con los frames, todo lo que ocurria de modo muy particular en el insert. Son cosas que quizas con una linkedlist podrían implementarse incluso con un template.
+
+Finalmente podemos llegar a la conclusión de que si se tiene un buen criterio para ordenar el árbol los tiempos de búsqueda se reducen de una manera bastante importante que es imposible no tener en cuenta debido a la su efectividad.
+
 
 # Anexos
 
