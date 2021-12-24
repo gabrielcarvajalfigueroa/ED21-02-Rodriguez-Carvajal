@@ -1,4 +1,4 @@
-#include "AVLtree.h"
+#include "include/AVLtree.h"
 int AVLtree::height(AVL* t) {
     int h = 0;
     if (t != NULL) {
