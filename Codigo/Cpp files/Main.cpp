@@ -1,6 +1,6 @@
 #include<iostream>
 #include<sstream>
-#include "Historias.h"
+#include "include/Historias.h"
 #define pow2(n) (1 << (n))
 using namespace std;
 using namespace cv;
@@ -87,7 +87,7 @@ int main() {
 	AVLtree avlt; //Se declara el arbol que recibira las imagenes
 
 	int limite = 0;
-	while (limite<500) {	//Aquí se limitan los frames del video a trabajar
+	while (limite<500) {	//AquÃ­ se limitan los frames del video a trabajar
 		video.read(image);
 		auto facesMarkers = fdetector.detectFaceRectangles(image);
 		// Codifico las caras detectadas
