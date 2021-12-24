@@ -1,4 +1,4 @@
-#include "Historias.h"
+#include "include/Historias.h"
 
 void Historias::Historia1() {
 	double scale = 2;
@@ -142,7 +142,7 @@ void Historias::Historia3() {
 		if ((((cuartoATrabjar - 1) * frames_totales) / 4) <= cont) {
 			//La magia
 			// se cuenta la cantidad de personas que aparecieron en esa parte del video
-			// Leemos todas las caras de los archivos de imágenes y las insertamos en el árbol
+			// Leemos todas las caras de los archivos de imÃ¡genes y las insertamos en el Ã¡rbol
 
 			
 
@@ -177,7 +177,7 @@ void Historias::Historia3() {
 			for (const auto& fm : facesMarkers) {
 				rectangle(image, fm, color, 4);
 			}
-			// Mostrar la imagen con las marcas (rectángulos) indicando la posición de la cara
+			// Mostrar la imagen con las marcas (rectÃ¡ngulos) indicando la posiciÃ³n de la cara
 			imshow("Detected Face", image);
 
 			waitKey(20);
