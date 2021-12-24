@@ -212,7 +212,7 @@ Logramos abordar el problema desde distintas estructuras de datos, en este caso 
 
 Luego de haber usado distintas estructuras de datos para abordar este problema, como grupo encontramos que el trabajo con árboles conlleva grandes ventajas a la hora de búsqueda en ciertos casos. Pero el uso de árboles ya sea el ABB o el AVl encontramos que sólo vale la pena si es que se tiene un buen criterio para diferenciar los datos ya que en esto recaen funciones importantísimas como el insert, buscar, eliminar. Se requiere un buen criterio para ordenar los datos ya que si no se tiene pierde su gracia el trabajar con árboles y sale más práctico trabajar con linkedlist.
 
-Además la diferencia entre implementar un árbol y una linked list es bastante grande, el implementar árboles en este caso fue algo muy personalizado como fue el tema de la frecuencia, el tener imágenes con los rostros, un vector con los frames, todo lo que ocurria de modo muy particular en el insert. Son cosas que quizas con una linkedlist podrían implementarse incluso con un template.
+Además la diferencia entre implementar un árbol y una linked list es bastante grande, el implementar árboles en este caso fue algo muy personalizado como fue el tema de la frecuencia, el tener imágenes con los rostros, un vector con los frames,  además de todo lo que ocurría de modo muy particular en el insert. Son cosas que quizás con una linkedlist podrían implementarse incluso con un template.
 
 Finalmente podemos llegar a la conclusión de que si se tiene un buen criterio para ordenar el árbol los tiempos de búsqueda se reducen de una manera bastante importante que es imposible no tener en cuenta debido a la su efectividad.
 
