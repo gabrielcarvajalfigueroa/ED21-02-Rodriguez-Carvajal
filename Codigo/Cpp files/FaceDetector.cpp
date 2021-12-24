@@ -1,7 +1,7 @@
 #include <sstream>
 #include <vector>
 #include <string>
-#include "FaceDetector.h"
+#include "include/FaceDetector.h"
 
 FaceDetector::FaceDetector() : scaleFactor_(1.05), minNeighbors_(8), imageWidth_(50), imageHeight_(50) {
     face_cascade.load("haarcascade/haarcascade_frontalface_alt.xml");
