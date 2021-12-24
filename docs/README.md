@@ -144,7 +144,7 @@ Por otro lado, la función que permite obtener el rostro que más apareció haci
 7.      if (aux->r == NULL) break;
 8.      aux = aux->r;
 9.    }
-10.
+10.   Top1 = aux->img;
 11.   imshow(" TOP - 1 ", Top1); // despliega el rostro
 12.    waitKey(0);               // hasta que se presione cualquier tecla
 13.  }
